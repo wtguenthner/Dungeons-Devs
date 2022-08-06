@@ -1,0 +1,146 @@
+body {
+  background: grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#banner {
+  background-image: url("./img/banner.png");
+  height: 280px;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.gameboard {
+  width: 100%;
+  height: 700px;
+  border-style: solid;
+  background-image: url("./img/map1.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 10px;
+  z-index: 0;
+}
+.player1_board,
+.player2_board {
+  width: 48%;
+  height: 95%;
+  /* border-style: solid;
+  border-color: red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.player1_title,
+.player2_title {
+  /* border-style: solid;
+  border-color: red; */
+  width: 95%;
+  height: 10%;
+  color: white;
+}
+.player1_score,
+.player2_score {
+  /* border-style: solid;
+  border-color: red; */
+  width: 95%;
+  height: 10%;
+  color: white;
+}
+.player1_card,
+.player2_card {
+  height: 500px;
+  width: 350px;
+  border-style: solid;
+  border-color: black;
+  border-radius: 10px;
+  border-width: 5px;
+  display: flex;
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+}
+.player2_title,
+.player2_score {
+  text-align: end;
+}
+
+.character1_name,
+.character2_name {
+  /* position: relative; */
+  bottom: 5%;
+  color: white;
+  font-size: 36px;
+  padding: 5px;
+  background: rgba(0, 0, 0, 0.3);
+}
+#portrait1 {
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  background-image: url("./img/silhouette.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+#portrait2 {
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  background-image: url("./img/silhouette.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.character1_defense,
+.character2_defense {
+  font-weight: bold;
+  font-size: 70px;
+  position: relative;
+  text-align: center;
+  color: darkred;
+  -webkit-text-stroke: 3px black;
+  top: 75%;
+
+  background-image: url("./img/defense.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.character1_attack,
+.character2_attack {
+  font-weight: bold;
+  font-size: 70px;
+  position: relative;
+  text-align: center;
+  color: darkred;
+  -webkit-text-stroke: 3px black;
+  top: 75%;
+  width: 10%;
+  background-image: url("./img/attack.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#start {
+  margin-top: 10px;
+  font-size: 24px;
+}
+#fight {
+  display: none;
+  margin-top: 10px;
+  font-size: 24px;
+}
+
+.midText {
+  position: absolute;
+}
