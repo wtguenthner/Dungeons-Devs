@@ -1,13 +1,13 @@
 let characters = [
-  { portrait: "/public/assets/img/warrior.png", name: "Warrior" },
-  { portrait: "/public/assets/img/mage.png", name: "Mage" },
-  { portrait: "/public/assets/img/archer.jpeg", name: "Archer" },
-  { portrait: "/public/assets/img/summoner.png", name: "Summoner" },
-  { portrait: "/public/assets/img/barbarian.png", name: "Barbarian" },
-  { portrait: "/public/assets/img/druid.png", name: "Druid" },
-  { portrait: "/public/assets/img/gunslinger.png", name: "Gunslinger" },
-  { portrait: "/public/assets/img/paladin.png", name: "Paladin" },
-  { portrait: "/public/assets/img/assassin.png", name: "Assassin" },
+  { portrait: "./assets/img/warrior.png", name: "Warrior" },
+  { portrait: "./assets/img/mage.png", name: "Mage" },
+  { portrait: "./assets/img/archer.jpeg", name: "Archer" },
+  { portrait: "./assets/img/summoner.png", name: "Summoner" },
+  { portrait: "./assets/img/barbarian.png", name: "Barbarian" },
+  { portrait: "./assets/img/druid.png", name: "Druid" },
+  { portrait: "./assets/img/gunslinger.png", name: "Gunslinger" },
+  { portrait: "./assets/img/paladin.png", name: "Paladin" },
+  { portrait: "./assets/img/assassin.png", name: "Assassin" },
 ];
 
 const player1_attack = document.querySelector(".character1_attack");
