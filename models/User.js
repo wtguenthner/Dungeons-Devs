@@ -10,11 +10,15 @@ class User extends Model {
 
 User.init(
   {
-    id: {
+    user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
+      references: {
+        model: 'characters',
+        key: 'user_id'
+      }
     },
     username: {
       type: DataTypes.STRING,
@@ -28,6 +32,16 @@ User.init(
         len: [6],
       },
     },
+    character_name:
+    {
+        type: DataTypes.STRING(16),
+        allowNull: false
+    },
+    class_id:
+    {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    }
   },
   {
     hooks: {
