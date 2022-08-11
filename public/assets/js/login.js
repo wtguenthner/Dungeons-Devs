@@ -1,4 +1,10 @@
-
+const showLogin = (event) =>{
+  event.preventDefault();
+  const userShow = document.querySelector('#user')
+  const passwordShow = document.querySelector('#password')
+  userShow.setAttribute("style", "display:flex")
+  passwordShow.setAttribute("style", "display:flex")
+}
 
 const loginFormHandler = async (event) => {
   event.preventDefault();
@@ -33,7 +39,8 @@ const signupFormHandler = async (event) => {
 
 document
   .querySelector(".login-form")
-  .addEventListener("submit", loginFormHandler);
+  // .addEventListener("submit", loginFormHandler);
+  .addEventListener("submit", showLogin);
 
 document
   .querySelector(".signup-form")
