@@ -1,4 +1,5 @@
 const path = require('path');
+
 const express = require('express');
 // Import express-session
 const session = require('express-session');
@@ -18,7 +19,7 @@ const sess = {
   saveUninitialized: true,
 };
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+  res.sendFile(path.join(__dirname, "/public/index.html"));
 });
 app.use(session(sess));
 
