@@ -18,7 +18,7 @@ const sess = {
   resave: false,
   saveUninitialized: true,
 };
-app.get("/", (req, res) => {
+app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 app.use(session(sess));
@@ -30,7 +30,7 @@ app.set('view engine', 'handlebars');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static("public"));
+app.use(express.static('public'));
 
 app.use(routes);
 
