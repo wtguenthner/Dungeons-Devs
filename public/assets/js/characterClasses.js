@@ -1,5 +1,6 @@
-const probCheck = require('../../../utils/helpers')
 
+
+import probCheck from '../../../utils/helpers.js'
 class Fighter {
     constructor(name) {
         this.name = name;

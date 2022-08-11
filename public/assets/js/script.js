@@ -1,13 +1,13 @@
 let characters = [
-  { portrait: "../assets/img/warrior.png", name: "Warrior" },
-  { portrait: "../assets/img/mage.png", name: "Mage" },
-  { portrait: "../assets/img/archer.jpeg", name: "Archer" },
-  { portrait: "../assets/img/summoner.png", name: "Summoner" },
-  { portrait: "../assets/img/barbarian.png", name: "Barbarian" },
-  { portrait: "../assets/img/druid.png", name: "Druid" },
-  { portrait: "../assets/img/gunslinger.png", name: "Gunslinger" },
-  { portrait: "../assets/img/paladin.png", name: "Paladin" },
-  { portrait: "../assets/img/assassin.png", name: "Assassin" },
+  { portrait: "./assets/img/warrior.png", name: "Warrior" },
+  { portrait: "./assets/img/mage.png", name: "Mage" },
+  { portrait: "./assets/img/archer.jpeg", name: "Archer" },
+  { portrait: "./assets/img/summoner.png", name: "Summoner" },
+  { portrait: "./assets/img/barbarian.png", name: "Barbarian" },
+  { portrait: "./assets/img/druid.png", name: "Druid" },
+  { portrait: "./assets/img/gunslinger.png", name: "Gunslinger" },
+  { portrait: "./assets/img/paladin.png", name: "Paladin" },
+  { portrait: "./assets/img/assassin.png", name: "Assassin" },
 ];
 
 const player1_attack = document.querySelector(".character1_attack");
@@ -58,7 +58,7 @@ const fight = () => {
   player1_defense.innerHTML = `&nbsp;${defend1}&nbsp;`;
   player2_defense.innerHTML = `&nbsp;${defend2}&nbsp;`;
   if (defend1 < 1) {
-    portrait1.style.backgroundImage = "url(../assets/img/skull.png)";
+    portrait1.style.backgroundImage = "url(./assets/img/skull.png)";
     player2_score++;
     startButton.setAttribute("style", "display:flex");
     fightButton.setAttribute("style", "display:none");
@@ -69,7 +69,7 @@ const fight = () => {
     player1_defense.innerHTML='';
   }
   if (defend2 < 1) {
-    portrait2.style.backgroundImage = "url(../assets/img/skull.png)";
+    portrait2.style.backgroundImage = "url(./assets/img/skull.png)";
     player1_score++;
     startButton.setAttribute("style", "display:flex");
     fightButton.setAttribute("style", "display:none");

@@ -29,4 +29,4 @@ const probabilityCheck = (max, ratio1, ratio2, ratio3, ratio4, ratio5, ratio6, r
   return check(digit);
 }
 
-module.exports = probabilityCheck;
+export default probabilityCheck;

@@ -1,4 +1,7 @@
-const user = require("../../../models/User");
+
+
+import user from '../../../models/User.js'
+
 const username = document.querySelector("#username-signup").value.trim();
 const password = document.querySelector("#password-signup").value.trim();
 const character_name = document.querySelector("#character-name").value.trim();
