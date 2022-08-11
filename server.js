@@ -11,7 +11,7 @@ import exphbs from 'express-handlebars'
 import routes from './controllers/index.js'
 import sequelize from './config/connection.js';
 import helpers from './utils/helpers.js'
-import db from './models/index.js'
+// import db from './models/index.js'
 
 import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
@@ -43,8 +43,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
-app.use(routes);
+// app.use(routes);
 
-db.sequelize.sync({ force: false }).then(() => {
+sequelize.sync({ force: false }).then(() => {
   app.listen(process.env.PORT || 3000, () => console.log(`Now listening on ${app.get('port')}`));
 });

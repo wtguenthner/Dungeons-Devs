@@ -21,6 +21,10 @@ Character.init(
             allowNull: false,
           
         },
+        class_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+          },
         character_name:
         {
             type: DataTypes.STRING,

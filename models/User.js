@@ -37,7 +37,6 @@ User.init(
     class_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-     
     },
   },
   {

@@ -5,19 +5,18 @@ import Characters from './characters.js'
 
 
 User.hasMany(Characters, { 
+    sourceKey: 'character_name',
     foreignKey: 'character_name'
-})
-
-User.hasMany(Classes, {
-    foreignKey: 'class_id'
 })
 
 Characters.belongsTo(User, {
-    foreignKey: 'character_name'
-     
+    targetKey: 'user_id',
+    foreignKey: 'user_id'
 })
 
-Classes.belongsTo(User, {
+Characters.hasOne(Classes, {
     foreignKey: 'class_id'
 })
+
+
 export {User as default, Classes, Characters}
