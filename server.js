@@ -10,8 +10,9 @@ import session from 'express-session'
 import exphbs from 'express-handlebars'
 import routes from './controllers/index.js'
 import sequelize from './config/connection.js';
-// import helpers from './utils/helpers.js'
+import helpers from './utils/helpers.js'
 import db from './models/index.js'
+
 import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -30,10 +31,10 @@ const sess = {
 
 app.use(session(sess));
 
-// const hbs = exphbs.create({ helpers });
+const hbs = exphbs.create({ helpers });
 
-// app.engine('handlebars', hbs.engine);
-// app.set('view engine', 'handlebars');
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
