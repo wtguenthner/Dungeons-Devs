@@ -17,7 +17,9 @@ const sess = {
   resave: false,
   saveUninitialized: true,
 };
-
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
 app.use(session(sess));
 
 const hbs = exphbs.create({ helpers });
