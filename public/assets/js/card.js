@@ -12,7 +12,7 @@ class Card {
     }
 }
 
-export { Card };
+export { Card as default };
 
 
 
