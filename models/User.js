@@ -12,23 +12,32 @@ class User extends Model {
 
 User.init(
   {
-    id: {
-      type: DataTypes.INTEGER,
+    user_id: {
+      type: DataTypes.UUID, 
+      defaultValue: DataTypes.UUIDV4,
       allowNull: false,
       primaryKey: true,
-      autoIncrement: true,
     },
     username: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    
+
     password: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [6],
       },
+    },
+    character_name: {
+      type: DataTypes.STRING(16),
+      allowNull: false,
+    },
+    class_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+     
     },
   },
   {
