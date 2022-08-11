@@ -145,7 +145,7 @@ body {
   position: absolute;
 }
 .login,
-.signup {
+.signup,.create {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -153,7 +153,7 @@ body {
 }
 
 #login,
-#signup {
+#signup,#create {
   background-image: url("../img/login.png");
   background-color: transparent;
   border: 0;
@@ -166,8 +166,11 @@ body {
 #signup {
   background-image: url("../img/signup.png");
 }
+#create{
+  background-image: url("../img/create.png");
+}
 #login:hover,
-#signup:hover {
+#signup:hover,#create:hover {
   opacity: 70%;
 }
 #form {
@@ -195,4 +198,14 @@ body {
 }
 .loginBackground{
   background-color: black;
+}
+#class-choice,#character-name{
+  font-size: 20px;
+}
+#class-choice{
+  width:228px;
+}
+#user,#password{
+  display: none;
+  
 }

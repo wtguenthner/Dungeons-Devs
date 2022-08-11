@@ -4,19 +4,20 @@ const Classes = require('./classes')
 const Characters = require('./characters')
 
 
-User.hasMany(Characters. {
+User.hasMany(Characters, {
     foreignKey: 'character_name'
 })
 
-User.hasMany(Classes {
+User.hasMany(Classes, {
     foreignKey: 'class_id'
 })
 
-Characters.belongsTo(User {
+Characters.belongsTo(User, {
     foreignKey: 'character_name'
+     
 })
 
-Classes.belongsTo(User {
+Classes.belongsTo(User, {
     foreignKey: 'class_id'
 })
 
