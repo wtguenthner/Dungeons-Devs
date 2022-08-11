@@ -1,7 +1,9 @@
 // const { Model } = require('sequelize/types');
-const User = require('./User');
-const Classes = require('./classes')
-const Characters = require('./characters')
+
+
+import User from './User.js';
+import Classes from './classes.js';
+import Characters from './characters.js'
 
 
 User.hasMany(Characters, {
@@ -21,4 +23,6 @@ Classes.belongsTo(User, {
     foreignKey: 'class_id'
 })
 
-module.exports = { User, Classes, Characters }
+
+
+export { User as default, Classes, Characters }

@@ -1,36 +1,22 @@
-const router = require("express").Router();
-const { User } = require("../../models");
-
-// router.get("/", async (req, res) => {
-//   try {
-//     const userData = await User.findAll().then((data) => res.json(data));
-//   } catch (err) {
-//     console.log(err);
-//     res.status(500).json(err);
-//   }
-// });
+import express from 'express'
+const router = express.Router();
+import  User  from '../../models/User.js'
 
 // CREATE new user
-router.post("/", async (req, res) => {
+router.post('/', async (req, res) => {
   try {
-    const dbUserData = await User.findOne({
+    const dbUserData = await User.create({
       username: req.body.username,
+
+      password: req.body.password,
     });
-    if (dbUserData) {
-      res.status(400).json({ message: "Username already exists" });
-      return;
-    } else {
-      await User.create({
-        username: req.body.username,
-        password: req.body.password,
-        character_name: req.body.character_name,
-        class_id: req.body.class_id,
-      }).then(
-        req.session.save(() => {
-          req.session.loggedIn = true;
-        })
-      );
-    }
+
+    // Set up sessions with a 'loggedIn' variable set to `true`
+    req.session.save(() => {
+      req.session.loggedIn = true;
+
+      res.status(200).json(dbUserData);
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -38,19 +24,18 @@ router.post("/", async (req, res) => {
 });
 
 // Login
-router.post("/login", async (req, res) => {
+router.post('/login', async (req, res) => {
   try {
     const dbUserData = await User.findOne({
       where: {
         username: req.body.username,
-        password: req.body.password,
       },
     });
 
     if (!dbUserData) {
       res
         .status(400)
-        .json({ message: "Incorrect email or password. Please try again!" });
+        .json({ message: 'Incorrect email or password. Please try again!' });
       return;
     }
 
@@ -59,7 +44,7 @@ router.post("/login", async (req, res) => {
     if (!validPassword) {
       res
         .status(400)
-        .json({ message: "Incorrect email or password. Please try again!" });
+        .json({ message: 'Incorrect email or password. Please try again!' });
       return;
     }
 
@@ -69,7 +54,7 @@ router.post("/login", async (req, res) => {
 
       res
         .status(200)
-        .json({ user: dbUserData, message: "You are now logged in!" });
+        .json({ user: dbUserData, message: 'You are now logged in!' });
     });
   } catch (err) {
     console.log(err);
@@ -78,7 +63,7 @@ router.post("/login", async (req, res) => {
 });
 
 // Logout
-router.post("/logout", (req, res) => {
+router.post('/logout', (req, res) => {
   // When the user logs out, destroy the session
   if (req.session.loggedIn) {
     req.session.destroy(() => {
@@ -89,4 +74,4 @@ router.post("/logout", (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

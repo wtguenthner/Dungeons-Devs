@@ -1,5 +1,9 @@
-const { Model, DataTypes, Sequelize } = require('sequelize');
-const sequelize = require('../config/connection.js');
+
+
+
+import {Model, DataTypes, Sequelize} from 'sequelize';
+import sequelize from '../config/connection.js';  
+
 class Character extends Model { }
 
 Character.init(
@@ -66,4 +70,4 @@ Character.init(
     }
 )
 
-module.exports = Character
+export default Character;

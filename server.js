@@ -1,40 +1,49 @@
-const path = require('path');
 
-const express = require('express');
+
+
+
+
+import path from "path";
+import express from "express";
 // Import express-session
-const session = require('express-session');
-const exphbs = require('express-handlebars');
+import session from 'express-session'
+import exphbs from 'express-handlebars'
+import routes from './controllers/index.js'
+import sequelize from './config/connection.js';
+// import helpers from './utils/helpers.js'
+import db from './models/index.js'
+import { fileURLToPath } from "url";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-const routes = require('./controllers');
-const sequelize = require('./config/connection');
-const helpers = require('./utils/helpers');
+
 
 const app = express();
-const PORT = process.env.PORT || 3001 ;
+app.set('port',process.env.PORT || 3000);
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static('public'));
 // Set up sessions
 const sess = {
   secret: 'Super secret secret',
   resave: false,
   saveUninitialized: true,
 };
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '/public/index.html'));
-});
+
 app.use(session(sess));
 
-const hbs = exphbs.create({ helpers });
+// const hbs = exphbs.create({ helpers });
 
-app.engine('handlebars', hbs.engine);
-app.set('view engine', 'handlebars');
+// app.engine('handlebars', hbs.engine);
+// app.set('view engine', 'handlebars');
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
 
-
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
 app.use(routes);
 
-sequelize.sync({ force: false }).then(() => {
-  app.listen(process.env.PORT, () => console.log(`Now listening on ${PORT}`));
+db.sequelize.sync({ force: false }).then(() => {
+  app.listen(process.env.PORT || 3000, () => console.log(`Now listening on ${app.get('port')}`));
 });
