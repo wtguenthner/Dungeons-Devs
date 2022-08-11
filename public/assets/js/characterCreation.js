@@ -32,3 +32,5 @@ if ((password = "docker")) {
 document
   .querySelector(".character-form")
   .addEventListener("submit", createCharacter);
+
+

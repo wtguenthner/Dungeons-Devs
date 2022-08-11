@@ -1,6 +1,6 @@
+import { probCheck, getCardAction, getCardValue } from ('../../../utils/helpers.js');
+import Card from ('./card.js');
 
-
-import probCheck from '../../../utils/helpers.js'
 class Fighter {
     constructor(name) {
         this.name = name;
@@ -11,15 +11,15 @@ class Fighter {
         this.hp -= input;
     }
 
-    attack() {
+    attack(opponent) {
         const attackProb = probCheck(50, 47);
 
         switch (attackProb) {
             case attackProb === 1:
-                opponentHash[this.name].takeDamage(this.attack)
+                opponent.takeDamage(this.attack - opponent.defense)
                 break;
             case attackProb === 10:
-                opponentHash[this.name].takeDamage(this.attack * 1.8)
+                opponent.takeDamage((this.attack * 1.8) - opponent.defense)
                 attackProb.message === 'Critical Hit!'
                 break;
         }
@@ -40,6 +40,10 @@ class Fighter {
                 this.defense += this.defense
                 break;
         }
+    }
+    
+    evade() {
+        return probCheck(40, this.evasion);
     }
 
 }
@@ -62,6 +66,46 @@ class Range extends Fighter {
     constructor(name) {
         super(name);
         hasProp = "Range";
+    }
+}
+
+class Boss extends Fighter {
+    constructor(name) {
+        super(name);
+        hasProp = "BOSS"
+    }
+
+    bossTurn(boss, player) {
+        if (boss.hp <= (boss.hp * .25)) {
+            let probOfAttack = probCheck(50, 38);
+            if (probOfAttack === 1) {
+                boss.attack(player);
+
+            } else if (probOfAttack === 10) {
+                boss.defend();
+            }
+        } else if (boss.hp <= (boss.hp * .5)) {
+            let probOfAttack = probCheck(50, 20);
+            if (probOfAttack === 1) {
+                boss.attack(player);
+
+            } else if (probOfAttack === 10) {
+                boss.defend();
+            }
+        } else {
+            boss.attack();
+        }
+    }
+}
+
+class Easy extends Boss {
+    constructor(name, attack, defense, evasion, hp, id) {
+        super(name);
+        this.attack = attack;
+        this.defense = defense;
+        this.evasion = evasion;
+        this.hp = hp
+        this.id = id
     }
 }
 
@@ -130,25 +174,4 @@ class Paladin extends Might {
     }
 }
 
-function characterCreate(charName, fighterChoice) {
-    switch (fighterChoice) {
-        case "Mage":
-            charName = new Mage(fighterChoice, 7, 6, 7, 100);
-            break;
-        case "Archer":
-            charName = new Archer(fighterChoice, 6, 6, 8, 100);
-            break;
-        case "Gunslinger":
-            charName = new Gunslinger(fighterChoice, 8, 6, 6, 100);
-            break;
-        case "Reaper":
-            charName = new Reaper(fighterChoice, 7, 7, 6, 100);
-            break;
-        case "Rogue":
-            charName = new Rogue(fighterChoice, 7, 6, 7, 100);
-            break;
-        case "Paladin":
-            charName = new Paladin(fighterChoice, 8, 7, 5, 100);
-            break;
-    }
-}
+export { Mage as default, Archer, Gunslinger, Reaper, Rogue, Paladin, Easy };
