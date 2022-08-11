@@ -11,31 +11,31 @@ const { User } = require("../../models");
 // });
 
 // CREATE new user
-router.post("/", async (req, res) => {
-  try {
-    const dbUserData = await User.findOne({
-      username: req.body.username,
-    });
-    if (dbUserData) {
-      res.status(400).json({ message: "Username already exists" });
-      return;
-    } else {
-      await User.create({
-        username: req.body.username,
-        password: req.body.password,
-        character_name: req.body.character_name,
-        class_id: req.body.class_id,
-      }).then(
-        req.session.save(() => {
-          req.session.loggedIn = true;
-        })
-      );
-    }
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
+// router.post("/", async (req, res) => {
+//   try {
+//     const dbUserData = await User.findOne({
+//       username: req.body.username,
+//     });
+//     if (dbUserData) {
+//       res.status(400).json({ message: "Username already exists" });
+//       return;
+//     } else {
+//       await User.create({
+//         username: req.body.username,
+//         password: req.body.password,
+//         character_name: req.body.character_name,
+//         class_id: req.body.class_id,
+//       }).then(
+//         req.session.save(() => {
+//           req.session.loggedIn = true;
+//         })
+//       );
+//     }
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json(err);
+//   }
+// });
 
 // Login
 router.post("/login", async (req, res) => {
