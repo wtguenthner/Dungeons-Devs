@@ -1,4 +1,4 @@
-const { Model, DataTypes } = require('sequelize');
+const { Model, DataTypes, Sequelize } = require('sequelize');
 const sequelize = require('../config/connection.js');
 class Character extends Model { }
 
@@ -8,23 +8,20 @@ Character.init(
         {
             type: DataTypes.INTEGER,
             allowNull: false,
-            autoIncrement: true
+            autoIncrement: true,
+            primaryKey:true,
         },
         user_id:
         {
-            type: DataTypes.INTEGER,
+            type: DataTypes.UUID,
             allowNull: false,
-            autoIncrement: true,
+          
         },
         character_name:
         {
             type: DataTypes.STRING,
             allowNull: false,
-            primaryKey: true,
-            references: {
-                model: "user",
-                key: "character_name"
-            }
+            
         },
         attack:
         {
@@ -50,12 +47,14 @@ Character.init(
         wins:
         {
             type: DataTypes.INTEGER,
-            allowNull:true
+            allowNull:true,
+            defaultValue:0
         },
         losses:
         {
             type: DataTypes.INTEGER,
-            allowNull: true
+            allowNull: true,
+            defaultValue:0
         }
     },
     {

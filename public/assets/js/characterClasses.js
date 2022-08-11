@@ -65,61 +65,67 @@ class Range extends Fighter {
 }
 
 class Archer extends Range {
-    constructor(name, attack, defense, evasion, hp) {
+    constructor(name, attack, defense, evasion, hp, id) {
         super(name);
         this.attack = attack;
         this.defense = defense;
         this.evasion = evasion;
         this.hp = hp
+        this.id = id
     }
 }
 
 class Gunslinger extends Range {
-    constructor(name, attack, defense, evasion, hp) {
+    constructor(name, attack, defense, evasion, hp, id) {
         super(name);
         this.attack = attack;
         this.defense = defense;
         this.evasion = evasion;
         this.hp = hp
+        this.id = id
     }
 }
 
 class Mage extends Magic {
-    constructor(name, attack, defense, evasion, hp) {
+    constructor(name, attack, defense, evasion, hp, id) {
         super(name);
         this.attack = attack;
         this.defense = defense;
         this.evasion = evasion;
         this.hp = hp
+        this.id = id
     }
 }
 class Reaper extends Magic {
-    constructor(name, attack, defense, evasion, hp) {
+    constructor(name, attack, defense, evasion, hp, id) {
         super(name);
         this.attack = attack;
         this.defense = defense;
         this.evasion = evasion;
         this.hp = hp
+        this.id = id
     }
 }
 
 class Rogue extends Might {
-    constructor(name, attack, defense, evasion, hp) {
+    constructor(name, attack, defense, evasion, hp, id) {
         super(name);
         this.attack = attack;
         this.defense = defense;
         this.evasion = evasion;
         this.hp = hp
+        this.id = id
     }
 }
 
 class Paladin extends Might {
-    constructor(name, attack, defense, evasion, hp) {
+    constructor(name, attack, defense, evasion, hp, id) {
         super(name);
         this.attack = attack;
         this.defense = defense;
         this.evasion = evasion;
         this.hp = hp
+        this.id = id
     }
 }
 

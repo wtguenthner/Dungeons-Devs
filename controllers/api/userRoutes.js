@@ -3,7 +3,7 @@ const { User } = require("../../models");
 
 router.get("/", async (req, res) => {
   try {
-    const userData = await User.findAll().then(data => res.json(data));
+    const userData = await User.findAll().then((data) => res.json(data));
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -13,18 +13,24 @@ router.get("/", async (req, res) => {
 // CREATE new user
 router.post("/", async (req, res) => {
   try {
-    const dbUserData = await User.create({
+    const dbUserData = await User.findOne({
       username: req.body.username,
-
-      password: req.body.password,
     });
-
-    // Set up sessions with a 'loggedIn' variable set to `true`
-    req.session.save(() => {
-      req.session.loggedIn = true;
-
-      res.status(200).json(dbUserData);
-    });
+    if (dbUserData) {
+      res.status(400).json({ message: "Username already exists" });
+      return;
+    } else {
+      await User.create({
+        username: req.body.username,
+        password: req.body.password,
+        character_name: req.body.character_name,
+        class_id: req.body.class_id,
+      }).then(
+        req.session.save(() => {
+          req.session.loggedIn = true;
+        })
+      );
+    }
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -37,6 +43,7 @@ router.post("/login", async (req, res) => {
     const dbUserData = await User.findOne({
       where: {
         username: req.body.username,
+        password: req.body.password,
       },
     });
 

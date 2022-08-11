@@ -9,11 +9,6 @@ Classes.init(
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
-            autoIncrement: true,
-            references: {
-                model: "users",
-                key: "class_id"
-            }
         },
         class_name:
         {
