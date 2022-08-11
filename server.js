@@ -43,7 +43,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
-app.use(routes);
+// app.use(routes);
 
 db.sequelize.sync({ force: false }).then(() => {
   app.listen(process.env.PORT || 3000, () => console.log(`Now listening on ${app.get('port')}`));
