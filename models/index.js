@@ -1,23 +1,22 @@
 // const { Model } = require('sequelize/types');
-const User = require('./User');
-const Classes = require('./classes')
-const Characters = require('./characters')
+import User   from './User.js';
+import Classes from './classes.js';
+import Characters from './characters.js'
 
 
-User.hasMany(Characters. {
+User.hasMany(Characters, { 
+    sourceKey: 'character_name',
     foreignKey: 'character_name'
 })
 
-User.hasMany(Classes {
+Characters.belongsTo(User, {
+    targetKey: 'user_id',
+    foreignKey: 'user_id'
+})
+
+Characters.hasOne(Classes, {
     foreignKey: 'class_id'
 })
 
-Characters.belongsTo(User {
-    foreignKey: 'character_name'
-})
 
-Classes.belongsTo(User {
-    foreignKey: 'class_id'
-})
-
-module.exports = { User, Classes, Characters }
+export {User as default, Classes, Characters}

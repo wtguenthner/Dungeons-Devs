@@ -1,5 +1,8 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection.js');
+
+
+import {Model, DataTypes} from 'sequelize';
+import sequelize from '../config/connection.js';
+
 class Classes extends Model { }
 
 Classes.init(
@@ -9,11 +12,6 @@ Classes.init(
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
-            autoIncrement: true,
-            references: {
-                model: "users",
-                key: "class_id"
-            }
         },
         class_name:
         {
@@ -51,4 +49,4 @@ Classes.init(
     }
 )
 
-module.exports = Classes
+export default Classes;

@@ -1,15 +1,26 @@
-const path = require('path');
-const express = require('express');
-// Import express-session
-const session = require('express-session');
-const exphbs = require('express-handlebars');
 
-const routes = require('./controllers');
-const sequelize = require('./config/connection');
-const helpers = require('./utils/helpers');
+
+
+
+
+import path from "path";
+import express from "express";
+// Import express-session
+import session from 'express-session'
+import exphbs from 'express-handlebars'
+import routes from './controllers/index.js'
+import sequelize from './config/connection.js';
+import helpers from './utils/helpers.js'
+// import db from './models/index.js'
+
+import { fileURLToPath } from "url";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+app.set('port',process.env.PORT || 3000);
 
 // Set up sessions
 const sess = {
@@ -29,8 +40,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(routes);
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+// app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log(`Now listening on ${PORT}`));
+  app.listen(process.env.PORT || 3000, () => console.log(`Now listening on ${app.get('port')}`));
 });

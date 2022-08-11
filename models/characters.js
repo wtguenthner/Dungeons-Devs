@@ -1,5 +1,9 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection.js');
+
+
+
+import {Model, DataTypes, Sequelize} from 'sequelize';
+import sequelize from '../config/connection.js';  
+
 class Character extends Model { }
 
 Character.init(
@@ -8,23 +12,24 @@ Character.init(
         {
             type: DataTypes.INTEGER,
             allowNull: false,
-            autoIncrement: true
+            autoIncrement: true,
+            primaryKey:true,
         },
         user_id:
         {
+            type: DataTypes.UUID,
+            allowNull: false,
+          
+        },
+        class_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            autoIncrement: true,
-        },
+          },
         character_name:
         {
             type: DataTypes.STRING,
             allowNull: false,
-            primaryKey: true,
-            references: {
-                model: "user",
-                key: "character_name"
-            }
+            
         },
         attack:
         {
@@ -50,12 +55,14 @@ Character.init(
         wins:
         {
             type: DataTypes.INTEGER,
-            allowNull:true
+            allowNull:true,
+            defaultValue:0
         },
         losses:
         {
             type: DataTypes.INTEGER,
-            allowNull: true
+            allowNull: true,
+            defaultValue:0
         }
     },
     {
@@ -67,4 +74,4 @@ Character.init(
     }
 )
 
-module.exports = Character
+export default Character;
