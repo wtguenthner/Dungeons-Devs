@@ -1,10 +1,10 @@
 import express from "express";
 const router = express.Router();
 import User from "../../models/User.js";
-
-router.get("/", async (req, res) => {
+import Characters from '../../models/characters.js'
+router.get("/:username", async (req, res) => {
   try {
-    const userData = await User.findAll().then((data) => res.json(data));
+     await User.findOne({where: {username: req.params.username}}).then((data) => res.json(data));
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -25,34 +25,6 @@ router.post("/", async (req, res) => {
       })
     );
 });
-// CREATE new user
-// router.post("/", async (req, res) => {
-//   try {
-//     const dbUserData =  User.findOne({
-//       where:{
-//       username: req.body.username,
-//       },
-//     });
-//     if (dbUserData.username = req.body.username) {
-//       res.status(400).json({ message: "Username already exists" });
-//       return;
-//     } else {
-//       await User.create({
-//         username: req.body.username,
-//         password: req.body.password,
-//         character_name: req.body.character_name,
-//         class_id: req.body.class_id,
-//       }).then(
-//         req.session.save(() => {
-//           req.session.loggedIn = true;
-//         })
-//       );
-//     }
-//   } catch (err) {
-//     console.log(err);
-//     res.status(500).json(err);
-//   }
-// });
 
 // Login
 router.post("/login", async (req, res) => {
@@ -85,7 +57,7 @@ router.post("/login", async (req, res) => {
 
       res
         .status(200)
-        .json({ user: dbUserData, message: "You are now logged in!" });
+        .json({ user: dbUserData, message: "You are now logged in!" }); 
     });
   } catch (err) {
     console.log(err);

@@ -18,7 +18,7 @@ Character.init(
         user_id:
         {
             type: DataTypes.UUID,
-            allowNull: false,
+            allowNull: true,
           
         },
         class_id: {

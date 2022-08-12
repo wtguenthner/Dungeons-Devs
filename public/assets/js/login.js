@@ -1,3 +1,5 @@
+
+
 const showLogin = (event) => {
   event.preventDefault();
   const userShow = document.querySelector("#user");
@@ -23,7 +25,9 @@ const loginFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace("/menu.html");
+      document.location.replace("/test.html");
+      sessionStorage.setItem("username", `${username}`)
+      
     } else {
       alert("Failed to log in.");
     }
@@ -43,3 +47,4 @@ document
 document
   .querySelector(".signup-form")
   .addEventListener("submit", signupFormHandler);
+  
