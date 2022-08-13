@@ -1,4 +1,7 @@
+
 import { Classes } from "../models/classes.js";
+
+
 
 const classData = [
   {
@@ -61,4 +64,6 @@ const classData = [
 
 const seedClasses = () => Classes.bulkCreate(classData);
 
+
 export default seedClasses;
+

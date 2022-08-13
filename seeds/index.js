@@ -1,7 +1,9 @@
 import sequelize from "../config/connection.js";
 import seedClasses from "./classSeeds.js";
+
 import seedCharacters from "./characterSeeds.js";
 import seedUsers from "./userSeeds.js";
+
 
 // Seed all databases, easy to add any seeded users or characters with this framework
 (async () => {
@@ -11,6 +13,7 @@ import seedUsers from "./userSeeds.js";
   await seedClasses();
   console.log("\n----- CLASSES SEEDED -----\n");
 
+
   await seedCharacters();
   console.log("\n----- CHARACTERS SEEDED -----\n");
 
@@ -19,3 +22,4 @@ import seedUsers from "./userSeeds.js";
 
   process.exit(0);
 })();
+
