@@ -56,5 +56,13 @@ h1 {
     .devs {
         font-size: 150%;
     }
-    
 }
+
+#darkknight {
+    display: none;
+}
+
+#shogo {
+    display: none;
+}
+
