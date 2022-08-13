@@ -11,26 +11,53 @@
 <body>
     <header id="title-container">
         <div id="logo-container">
-
+            <img id="logo" src="./assets/img/DungeonsNDevs.png" alt="Dungeons and Devs logo">
         </div>
-        <div id="username-contianer">
-            <h2 id="playerUsername">PlayerUsername</h2>
-        </div>
+        <h2 id="playerUsername">PlayerUsername</h2>
     </header>
 
     <main id="gameboard-container">
-        <section id="playerCard-container">
-            <div id="playerName-container">
+        <section id="bossCard-container" class="characterCard">
+            <div class="cardTitle-container" id="bossName-container">
+                <h3 id="bossName">Stanman</h3>
+            </div>
+            <img id="bossPortrait" class="cardPortrait" src="./assets/img/Stanmanga79.png">
+            <div id="bossStat-container">
+                <div id="attack-container">
+                    <p id="bossAttackVal">8</p>
+                </div>
+                <div id="defense-container">
+                    <p id="bossDefenseVal">6</p>
+                </div>
+                <div id="evasion-container">
+                    <p id="bossEvasionVal">6</p>
+                </div>
+            </div>
+        </section>
+        <div id="bossHealthbar-container">
+            <div id="healthLogo"></div>
+            <div id="bossHealthbar">
+                <div id="bossHealthCurrent">
+
+                </div>
+            </div>
+        </div>
+
+        <section id="playerCard-container" class="characterCard">
+            <div class="cardTitle-container" id="playerName-container">
                 <h3 id="playerName">PlayerName</h3>
             </div>
-            <div id="attack-container">
-                <p id="attackVal">7</p>
-            </div>
-            <div id="defense-container">
-                <p id="defenseVal">6</p>
-            </div>
-            <div id="evasion-container">
-                <p id="evasionVal">7</p>
+            <img id="playerPortrait" class="cardPortrait" src="./assets/img/paladin.png">
+            <div id="playerStat-container">
+                <div id="attack-container">
+                    <p id="playerAttackVal">7</p>
+                </div>
+                <div id="defense-container">
+                    <p id="playerDefenseVal">6</p>
+                </div>
+                <div id="evasion-container">
+                    <p id="playerEvasionVal">7</p>
+                </div>
             </div>
         </section>
         <div id="playerHealthbar-container">
@@ -41,63 +68,47 @@
                 </div>
             </div>
         </div>
-
-        <section id="bossCard-container">
-            <div id="bossName-container">
-                <h3 id="playerName">BossName</h3>
-            </div>
-            <div id="attack-container">
-                <p id="attackVal">8</p>
-            </div>
-            <div id="defense-container">
-                <p id="defenseVal">6</p>
-            </div>
-            <div id="evasion-container">
-                <p id="evasionVal">6</p>
-            </div>
-        </section>
-        <div id="BossHealthbar-container">
-            <div id="healthLogo"></div>
-            <div id="BossHealthbar">
-                <div id="BossHealthCurrent">
+        <section id="playerDeck">
+            <aside class="deckCard" id="Card1">
+                <div id="card1Title-container">
+                    <h4 id="card1Title">Attack</h4>
+                </div>
+                <div id="card1Icon">
 
                 </div>
-            </div>
+                <div id="card1Val-container">
+                    <h5 id="card1Val">+5</h5>
+                </div>
+            </aside>
+            <aside class="deckCard" id="Card2">
+                <div id="card2Title-container">
+                    <h4 id="card2Title">Evasion</h4>
+                </div>
+                <div id="card2Icon">
+
+                </div>
+                <div id="card2Val-container">
+                    <h5 id="card2Val">+2</h5>
+                </div>
+            </aside>
+            <aside class="deckCard" id="Card3">
+                <div id="card3Title-container">
+                    <h4 id="card3Title">Defense</h4>
+                </div>
+                <div id="card3Icon">
+
+                </div>
+                <div id="card3Val-container">
+                    <h5 id="card3Val">+3</h5>
+                </div>
+            </aside>
+        </section>
+
+        <div id="turnOptions-container">
+            <p id="attackOption">Attack</p>
+            <p>or</p>
+            <p id="defendOption">Defend</p>
         </div>
-
-        <aside id="Card1">
-            <div id="card1Title-container">
-                <h4 id="card1Title">Attack</h4>
-            </div>
-            <div id="card1Icon">
-
-            </div>
-            <div id="card1Val-container">
-                <h5 id="card1Val">+5</h5>
-            </div>
-        </aside>
-        <aside id="Card2">
-            <div id="card2Title-container">
-                <h4 id="card2Title">Evasion</h4>
-            </div>
-            <div id="card2Icon">
-
-            </div>
-            <div id="card2Val-container">
-                <h5 id="card2Val">+2</h5>
-            </div>
-        </aside>
-        <aside id="Card3">
-            <div id="card3Title-container">
-                <h4 id="card3Title">Defense</h4>
-            </div>
-            <div id="card3Icon">
-
-            </div>
-            <div id="card3Val-container">
-                <h5 id="card3Val">+3</h5>
-            </div>
-        </aside>
     </main>
     
 </body>
