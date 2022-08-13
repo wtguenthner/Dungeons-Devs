@@ -11,8 +11,6 @@ maceAvi.addEventListener('mouseout', function (event) {
     maceoAvi.src="./assets/img/maceo.jpg";
 })
 
-
-
 sophiaAvi.addEventListener('mouseover', function (event) {
     event.preventDefault();
     sophiaAvi.src="./assets/img/darkknight.png"

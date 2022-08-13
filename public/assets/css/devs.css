@@ -2,7 +2,7 @@
     color: tan;
     font-family: Haettenschweiler;
     text-align: center;
-    -webkit-text-stroke: 1px black;
+    -webkit-text-stroke: 1.5px wheat;
     display: flex;
     justify-content: center;
 }
