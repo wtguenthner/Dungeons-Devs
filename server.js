@@ -8,7 +8,7 @@ import express from "express";
 // Import express-session
 import session from 'express-session'
 import exphbs from 'express-handlebars'
-import routes from './controllers/index.js'
+import {router} from './controllers/index.js'
 import sequelize from './config/connection.js';
 import helpers from './utils/helpers.js'
 // import db from './models/index.js'
@@ -43,7 +43,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
-// app.use(routes);
+app.use('/',router);
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(process.env.PORT || 3000, () => console.log(`Now listening on ${app.get('port')}`));

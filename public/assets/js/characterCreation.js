@@ -1,13 +1,20 @@
 
 
-import user from '../../../models/User.js'
+
 
 const username = document.querySelector("#username-signup").value.trim();
 const password = document.querySelector("#password-signup").value.trim();
 const character_name = document.querySelector("#character-name").value.trim();
 const class_id = document.querySelector("#class-choice").value;
 
-const createCharacter = async(username, password, character_name, class_id) =>{
+const createCharacter = async(event) =>{
+  event.preventDefault();
+  
+const username = document.querySelector("#username-signup").value.trim();
+const password = document.querySelector("#password-signup").value.trim();
+const character_name = document.querySelector("#character-name").value.trim();
+const class_id = document.querySelector("#class-choice").value;
+
 if(username, password){
     const response = await fetch("/api/users/", {
   method: "POST",
@@ -18,16 +25,11 @@ if(username, password){
 }
 
 
+  // if (/\S/.test(username) && /\S/.test(password)) {
+  // } else {
+  //   alert("Failed to sign up.");
+  // }
 
-
-if ((password = "docker")) {
-  alert("No Stanley");
-} else {
-  if (/\S/.test(username) && /\S/.test(password)) {
-  } else {
-    alert("Failed to sign up.");
-  }
-}
 
 document
   .querySelector(".character-form")

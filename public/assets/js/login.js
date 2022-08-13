@@ -1,10 +1,15 @@
-const showLogin = (event) =>{
+
+
+const showLogin = (event) => {
   event.preventDefault();
-  const userShow = document.querySelector('#user')
-  const passwordShow = document.querySelector('#password')
-  userShow.setAttribute("style", "display:flex")
-  passwordShow.setAttribute("style", "display:flex")
-}
+  const userShow = document.querySelector("#user");
+  const passwordShow = document.querySelector("#password");
+  userShow.setAttribute("style", "display:flex");
+  passwordShow.setAttribute("style", "display:flex");
+  document
+    .querySelector(".login-form")
+    .addEventListener("submit", loginFormHandler);
+};
 
 const loginFormHandler = async (event) => {
   event.preventDefault();
@@ -20,7 +25,9 @@ const loginFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace("/menu");
+      document.location.replace("/test.html");
+      sessionStorage.setItem("username", `${username}`)
+      
     } else {
       alert("Failed to log in.");
     }
@@ -29,13 +36,8 @@ const loginFormHandler = async (event) => {
 
 const signupFormHandler = async (event) => {
   event.preventDefault();
-  document.location.replace(
-    `/characterCreation.html`
-  );
-
-  
+  document.location.replace(`/characterCreation.html`);
 };
-
 
 document
   .querySelector(".login-form")
@@ -45,3 +47,4 @@ document
 document
   .querySelector(".signup-form")
   .addEventListener("submit", signupFormHandler);
+  
