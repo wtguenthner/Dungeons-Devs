@@ -82,4 +82,9 @@ function characterCreate(charName, fighterChoice) {
     }
   }
 
-export { probabilityCheck as default, getCardAction, getCardValue, characterCreate };
+  function isAuthenticated (req, res, next) {
+    if (req.session.user) next()
+    else next('route')
+  }
+
+export { probabilityCheck as default, getCardAction, getCardValue, characterCreate, isAuthenticated };
