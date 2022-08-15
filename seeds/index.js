@@ -14,11 +14,11 @@ import seedUsers from "./userSeeds.js";
   console.log("\n----- CLASSES SEEDED -----\n");
 
 
-  await seedCharacters();
-  console.log("\n----- CHARACTERS SEEDED -----\n");
+  // await seedCharacters();
+  // console.log("\n----- CHARACTERS SEEDED -----\n");
 
-  await seedUsers();
-  console.log("\n----- USERS SEEDED -----\n");
+  // await seedUsers();
+  // console.log("\n----- USERS SEEDED -----\n");
 
   process.exit(0);
 })();

@@ -45,6 +45,6 @@ app.get("/", (req, res) => {
 });
 app.use('/',router);
 
-sequelize.sync({ force: false }).then(() => {
+sequelize.sync({ force: true }).then(() => {
   app.listen(process.env.PORT || 3000, () => console.log(`Now listening on ${app.get('port')}`));
 });
