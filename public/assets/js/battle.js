@@ -56,6 +56,6 @@ const battle = async (player, opponent) => {
         
 }
 
-let Kevin = new Paladin("Kevin", 8, 7, 5, 100);
+let Kevin = await fetch('/characters/');
 let boss = new Easy("Mob Assassin", 7, 6, 7, 100);
 battle(Kevin, boss)

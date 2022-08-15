@@ -1,5 +1,4 @@
 import { probCheck, getCardAction, getCardValue } from ('../../../utils/helpers.js');
-import Card from ('./card.js');
 
 class Fighter {
     constructor(name) {
