@@ -1,5 +1,19 @@
 import { probabilityCheck, getCardAction, getCardValue } from '../../../utils/helpers.js';
 import { Card } from './card.js';
+import express from 'express';
+import session from 'express-session';
+
+const app = express();
+app.use(session(sess));
+const getCharacterFromSession = await app.get('/', (req, res, next) => {
+    if (req.session.user) {
+        let userID = req.session.user;
+        return fetch(`api/characters/${userID}`);
+    } else {
+        return;
+    }
+})
+console.log(getCharacterFromSession);
 
 const card1Title = document.getElementById('card1Title');
 const card1Val = document.getElementById('card1Val');

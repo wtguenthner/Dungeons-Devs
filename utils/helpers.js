@@ -1,16 +1,4 @@
-import express from 'express';
-import session from 'express-session';
 
-const app = express();
-app.use(session(sess));
-const getCharacterFromSession = await app.get('/', (req, res, next) => {
-    if (req.session.user) {
-        let userID = req.session.user;
-        return fetch(`api/characters/${userID}`);
-    } else {
-        return;
-    }
-})
     //probability function
 const probabilityCheck = (max, ratio1, ratio2, ratio3, ratio4, ratio5, ratio6, ratio7, ratio8, ratio9) => {
     let digit = Math.floor(Math.random() * max + 1);
@@ -99,4 +87,4 @@ function characterCreate(charName, fighterChoice) {
     else next('route')
   }
 
-export { probabilityCheck as default, getCardAction, getCardValue, characterCreate, isAuthenticated, getCharacterFromSession };
+export { probabilityCheck as default, getCardAction, getCardValue, characterCreate, isAuthenticated };
