@@ -1,3 +1,5 @@
+
+
 let characters = [
   { portrait: "./assets/img/warrior.png", name: "Warrior" },
   { portrait: "./assets/img/mage.png", name: "Mage" },
@@ -80,3 +82,6 @@ const fight = () => {
     player2_defense.innerHTML='';
   }
 };
+
+
+

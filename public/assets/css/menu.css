@@ -9,6 +9,7 @@
         background-size: cover;
         background-attachment: fixed;
         background-repeat: no-repeat;
+        
     }
 
     .jobboard {
@@ -42,28 +43,29 @@
     }
 
     #startmatch {
-        background-image: url("../img/startmatch.png");
+        background-image: url("../img/startfight.png");
         background-color: transparent;
-        background-size: 74%;
+        background-size: 68%;
         background-repeat: no-repeat;
         height: 100%;
         width: 26%;
         border: none;
         position: absolute;
-        top: 29%;
-        left: 43%;
+        top: 20%;
+        left: 38%;
     }
 
     #devs {
         background-image: url("../img/devs.png");
         background-color: transparent;
-        background-size: 78%;
+        background-size: 73%;
         background-repeat: no-repeat;
         height: 400px;
         width: 26%;
         border: none;
         position: absolute;
         top: 52%;
+        left: 37%;
     }
 
     #logout {
