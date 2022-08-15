@@ -4,6 +4,15 @@ import User from "../../models/User.js";
 import Characters from '../../models/characters.js';
 import isAuthenticated from './utils/helpers.js';
 
+router.get("/", async (req, res) => {
+  try {
+    await User.findAll().then((data) => res.json(data));
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+})
+
 router.get("/:username", async (req, res) => {
   try {
      await User.findOne({where: {username: req.params.username}}).then((data) => res.json(data));
