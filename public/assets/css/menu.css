@@ -66,3 +66,31 @@
         position: absolute;
         top: 52%;
     }
+
+    #logout {
+        background-image: url("../img/logout.png");
+        background-color: transparent;
+        background-repeat: no-repeat;
+        background-size: 58%;
+        border: none;
+        position: absolute;
+        height: 300px;
+        width: 18%;
+        left: 74%;
+        top: 67%;
+    }
+
+    #profile:hover, #startmatch:hover, #devs:hover, #logout:hover, #playercard:hover {
+        filter: brightness(120%);
+    }
+
+    #playercard {
+        background-color: transparent;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        border: none;
+        position: absolute;
+        height: 12%;
+        top: -16%;
+        left: 60%;
+    }
