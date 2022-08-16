@@ -63,7 +63,11 @@ Characters.init(
             type: DataTypes.INTEGER,
             allowNull: true,
             defaultValue:0
-        }
+        },
+        class_avatar: {
+            type: DataTypes.STRING,
+            allowNull:true
+          },
     },
     {
         sequelize,

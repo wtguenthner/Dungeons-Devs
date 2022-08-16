@@ -74,10 +74,17 @@ main {
 }
 
 .cardPortrait {
+    
     width: 60px;
     margin: auto;
+    
 }
-
+#playerPortait{
+    width:auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 #playerDeck {
     width: 160px;
     height: 80px;
