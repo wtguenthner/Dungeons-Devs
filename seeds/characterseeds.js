@@ -1,7 +1,7 @@
-import  Character  from "../models/characters.js";
+import  Characters  from "../models/characters.js";
 
 const characterData = [];
 
-const seedCharacters = () => Character.bulkCreate(characterData);
+const seedCharacters = () => Characters.bulkCreate(characterData);
 
 export default seedCharacters;

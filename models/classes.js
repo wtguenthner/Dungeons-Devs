@@ -32,7 +32,7 @@ Classes.init(
       defaultValue: 100,
     },
     class_avatar: {
-      type: DataTypes.BLOB("long"),
+      type: DataTypes.STRING,
     },
   },
   {

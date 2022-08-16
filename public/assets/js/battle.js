@@ -7,7 +7,10 @@ const card2Title = document.getElementById("card2Title");
 const card2Val = document.getElementById("card2Val");
 const card3Title = document.getElementById("card3Title");
 const card3Val = document.getElementById("card3Val");
-
+const attack = document.querySelector("#playerAttackVal");
+const defense = document.querySelector("#playerDefenseVal");;
+const evasion = document.querySelector("#playerEvasionVal");;
+const portrait = document.querySelector('#playerPortrait')
 const player = document.querySelector("#playerUsername");
 const username = sessionStorage.getItem("username");
 player.innerHTML = `${username}`;
@@ -17,9 +20,14 @@ const init = async () => {
   const currentUserData = await getUserData();
 
   //Use this variable for attack/defense/evasion
-  const currentCharacter = await getClassData(currentUserData.class_id);
+  const currentCharacter = await getCharacterData(currentUserData.user_id);
 console.log(currentCharacter)
   playerName.innerHTML = currentCharacter.character_name;
+  attack.innerHTML = currentCharacter.attack;
+  defense.innerHTML = currentCharacter.defense;
+  evasion.innerHTML = currentCharacter.evasion;
+  portrait.style.backgroundImage = `url(${currentCharacter.class_avatar})`
+
 };
 
 const getUserData = async () => {
@@ -36,8 +44,8 @@ const getUserData = async () => {
    
 };
 
-const getClassData = async (class_id) => {
-  return await fetch(`/api/characters/${class_id}`, {
+const getCharacterData = async (user_id) => {
+  return await fetch(`/api/characters/${user_id}`, {
     method: "GET",
     headers: { "Content-Type": "application/json" },
   })
