@@ -1,6 +1,4 @@
-
 import  Classes  from "../models/classes.js";
-
 
 
 const classData = [
@@ -11,6 +9,7 @@ const classData = [
     defense: 6,
     evasion: 8,
     health: 100,
+    class_avatar: "./assets/img/archer.jpeg",
   },
   {
     class_id: 2,
@@ -19,6 +18,7 @@ const classData = [
     defense: 6,
     evasion: 6,
     health: 100,
+    class_avatar: "./assets/img/gunslinger.png",
   },
   {
     class_id: 3,
@@ -27,6 +27,7 @@ const classData = [
     defense: 6,
     evasion: 7,
     health: 100,
+    class_avatar: "./assets/img/mage.png",
   },
   {
     class_id: 4,
@@ -35,6 +36,7 @@ const classData = [
     defense: 7,
     evasion: 5,
     health: 100,
+    class_avatar: "./assets/img/paladin.png",
   },
   {
     class_id: 5,
@@ -43,6 +45,7 @@ const classData = [
     defense: 7,
     evasion: 6,
     health: 100,
+    class_avatar: "./assets/img/summoner.png",
   },
   {
     class_id: 6,
@@ -51,19 +54,19 @@ const classData = [
     defense: 4,
     evasion: 8,
     health: 100,
+    class_avatar: "./assets/img/assassin.png",
   },
   {
     class_id: 7,
-    class_name: "Mob Assassin",
+    class_name: "Stanman",
     attack: 7,
     defense: 6,
     evasion: 7,
     health: 100,
+    class_avatar: "./assets/img/Stanmang79.png",
   },
 ];
 
 const seedClasses = () => Classes.bulkCreate(classData);
 
-
 export default seedClasses;
-
