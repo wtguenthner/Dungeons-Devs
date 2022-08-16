@@ -25,7 +25,7 @@ const loginFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace("/test.html");
+      document.location.replace("/battle.html");
       sessionStorage.setItem("username", `${username}`)
       
     } else {

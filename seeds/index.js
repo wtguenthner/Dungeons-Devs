@@ -12,9 +12,6 @@ import seedUsers from "./userSeeds.js";
   await seedClasses();
   console.log("\n----- CLASSES SEEDED -----\n");
 
-  // await seedCharacters();
-  // console.log("\n----- CHARACTERS SEEDED -----\n");
-
   // await seedUsers();
   // console.log("\n----- USERS SEEDED -----\n");
 

@@ -22,6 +22,7 @@ if(username, password){
   headers: { "Content-Type": "application/json" },
 });
 }
+document.location.replace("/battle.html");
 }
 
 

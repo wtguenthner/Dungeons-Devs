@@ -1,10 +1,8 @@
 const user = document.querySelector('#user_name');
 const charName = document.querySelector('#charName');
-
-
-
-
 const username = sessionStorage.getItem("username");
+
+
 
 const getData = async(event)=>{
     event.preventDefault();
