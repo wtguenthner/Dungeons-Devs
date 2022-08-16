@@ -1,5 +1,5 @@
 
-import { Classes } from "../models/classes.js";
+import  Classes  from "../models/classes.js";
 
 
 

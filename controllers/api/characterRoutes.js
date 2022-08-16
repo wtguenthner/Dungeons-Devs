@@ -4,23 +4,22 @@ import Characters from "../../models/characters.js";
 import Classes from "../../models/classes.js";
 import User from "../../models/User.js";
 
-router.get("/:username", async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
-    const charData = await Characters.findOne(username).then((data) =>
-      res.json(data)
-    );
+    await Classes.findByPk(req.params.id)
+    .then((data) => res.json(data))
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
-});
+})
 
 router.post("/:id", async (req, res) => {
   try {
     await Classes.findByPk(req.params.id)
 
       .then(async (charData) => {
-        console.log(charData.class_id);
+        console.log(charData);
         await Characters.create({
           class_id: charData.class_id,
           user_id: req.body.user_id,
@@ -36,4 +35,5 @@ router.post("/:id", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 export default router;

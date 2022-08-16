@@ -4,9 +4,9 @@
 import {Model, DataTypes, Sequelize} from 'sequelize';
 import sequelize from '../config/connection.js';  
 
-class Character extends Model { }
+class Characters extends Model { }
 
-Character.init(
+Characters.init(
     {
         character_id:
         {
@@ -70,8 +70,8 @@ Character.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'character',
+        modelName: 'characters',
     }
 )
 
-export default Character;
+export default Characters;

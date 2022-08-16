@@ -1,20 +1,30 @@
-    //direct to user profile
-    //allow logout
-    //direct to MeetTheDevs
-    //start a game
+const profile = document.querySelector("#profile");
+const startFight = document.querySelector("#startmatch");
+const devs = document.querySelector("#devs");
+// const logout = document.getElementById('logout');
 
-    //user profile button document.location.replace("/profile.html");
+//user profile button document.location.replace("/profile.html");
+profile.addEventListener("submit", () =>
+  document.location.replace("/profile.html")
+);
 
-    //logout button
-        //remove session data for logged in user, setting logged in = false;
-        //document.location.replace('/');
+//logout button
+//document.location.replace('/');
+// logout.addEventListener('submit', async() => await fetch("/api/users/logout"));
 
-    //MTDs button document.location.replace('/meetthedevs.html');
+//MTDs button document.location.replace('/meetthedevs.html');
+devs.addEventListener("submit", () =>
+  document.location.replace("/meetdevs.html")
+);
 
-    //start a game button reveal user characters to confirm desired fighter.
-        //check if user.characters.length > 1
-        //if not add fighter obj to session storage
-        //more than 1 character than ... 
-            //when fighter is selected reaveal a FIGHT! button.
-                //add selected fighter obj to session storage
-            //fight button document.location.replace('/battle.html');
+//start a game button document.location.replace('/battle.html');
+
+
+
+const startMatch = () =>{
+    document.location.replace("/battle.html")
+}
+
+document
+.querySelector("#startmatch")
+.addEventListener("submit", startMatch);

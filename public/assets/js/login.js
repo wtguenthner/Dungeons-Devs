@@ -37,6 +37,8 @@ const loginFormHandler = async (event) => {
 const signupFormHandler = async (event) => {
   event.preventDefault();
   document.location.replace(`/characterCreation.html`);
+  
+  
 };
 
 document
