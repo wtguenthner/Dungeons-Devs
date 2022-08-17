@@ -1,10 +1,10 @@
-import { probCheck, getCardAction, getCardValue } from ('../../../utils/helpers.js');
-import Card from ('./card.js');
+import { default as probabilityCheck, characterCreate, getCardAction, getCardValue } from '../../utils/helpers.js';
+import Card from './card.js';
 
 class Fighter {
     constructor(name) {
         this.name = name;
-        hasProp = false;
+        this.hasProp = false;
     }
 
     takeDamage(input) {
@@ -16,7 +16,7 @@ class Fighter {
     }
 
     attack(opponent) {
-        const attackProb = probCheck(50, 47);
+        const attackProb = probabilityCheck(50, 47);
 
         switch (attackProb) {
             case attackProb === 1:
@@ -31,7 +31,7 @@ class Fighter {
     }
 
     defend() {
-        const defendProb = probCheck(50, 35, 47);
+        const defendProb = probabilityCheck(50, 35, 47);
 
         switch (defendProb) {
             case defendProb === 1:
@@ -47,7 +47,7 @@ class Fighter {
     }
     
     evade() {
-        return probCheck(40, this.evasion);
+        return probabilityCheck(40, this.evasion);
     }
 
 }
@@ -55,33 +55,33 @@ class Fighter {
 class Might extends Fighter {
     constructor(name) {
         super(name);
-        hasProp = "Might";
+        this.hasProp = "Might";
     }
 }
 
 class Magic extends Fighter {
     constructor(name) {
         super(name);
-        hasProp = "Magic";
+        this.hasProp = "Magic";
     }
 }
 
 class Range extends Fighter {
     constructor(name) {
         super(name);
-        hasProp = "Range";
+        this.hasProp = "Range";
     }
 }
 
 class Boss extends Fighter {
     constructor(name) {
         super(name);
-        hasProp = "BOSS"
+        this.hasProp = "BOSS"
     }
 
     bossTurn(boss, player) {
         if (boss.hp <= (boss.hp * .25)) {
-            let probOfAttack = probCheck(50, 38);
+            let probOfAttack = probabilityCheck(50, 38);
             if (probOfAttack === 1) {
                 boss.attack(player);
 
@@ -89,7 +89,7 @@ class Boss extends Fighter {
                 boss.defend();
             }
         } else if (boss.hp <= (boss.hp * .5)) {
-            let probOfAttack = probCheck(50, 20);
+            let probOfAttack = probabilityCheck(50, 20);
             if (probOfAttack === 1) {
                 boss.attack(player);
 
@@ -178,4 +178,4 @@ class Paladin extends Might {
     }
 }
 
-export { Mage as default, Archer, Gunslinger, Reaper, Rogue, Paladin, Easy };
+export { Mage, Archer, Gunslinger, Reaper, Rogue, Paladin, Easy };

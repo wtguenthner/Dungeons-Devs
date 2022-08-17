@@ -1,8 +1,5 @@
-// import { probabilityCheck, getCardAction, getCardValue } from '../../../utils/helpers.js';
-import { Rogue, Paladin } from '../../../models/might.js';
-import { Mage, Reaper } from '../../../models/magic.js';
-import { Archer, Gunslinger } from '../../../models/range.js';
-import { Easy } from '../../../models/boss.js';
+import { default as probabilityCheck, getCardAction, getCardValue } from '../../utils/helpers.js';
+import { Mage, Archer, Gunslinger, Reaper, Rogue, Paladin, Easy } from './characterClasses.js';
 import Card from "./card.js";
 const card1 = document.getElementById('Card1');
 const card1Title = document.getElementById("card1Title");
@@ -14,9 +11,9 @@ const card3 = document.getElementById('Card3');
 const card3Title = document.getElementById("card3Title");
 const card3Val = document.getElementById("card3Val");
 const attack = document.querySelector("#playerAttackVal");
-const defense = document.querySelector("#playerDefenseVal");;
-const evasion = document.querySelector("#playerEvasionVal");;
-const portrait = document.querySelector('#playerPortrait-container')
+const defense = document.querySelector("#playerDefenseVal");
+const evasion = document.querySelector("#playerEvasionVal");
+const portrait = document.querySelector('#playerPortrait-container');
 const player = document.querySelector("#playerUsername");
 const username = sessionStorage.getItem("username");
 player.innerHTML = `${username}`;
@@ -70,10 +67,10 @@ const getCharacterData = async (user_id) => {
 
 const setCharacterInfo = async () => {
     const currentUserData = await getUserData();
-
+    // console.log(currentUserData.user_id);
     //Use this variable for attack/defense/evasion
     const currentCharacter = await getCharacterData(currentUserData.user_id);
-    console.log(currentCharacter)
+    // console.log(currentCharacter)
     playerName.innerText = currentCharacter.character_name;
     attack.innerText = currentCharacter.attack;
     defense.innerText = currentCharacter.defense;
@@ -81,97 +78,95 @@ const setCharacterInfo = async () => {
     portrait.innerHTML = `<img id="playerPortrait" class="cardPortrait" src="${currentCharacter.class_avatar}" alt="player's character portrait">`
     
     const classType = (classID) => {
-        switch (classID) {
-            case classID === 1:
-                return new Archer(currentCharacter.character_name, currentCharacter.attack, currentCharacter.defense, currentCharacter.evasion, currentCharacter.health, currentCharacter,character_id);
-            case classID === 2:
-                return new Gunslinger(currentCharacter.character_name, currentCharacter.attack, currentCharacter.defense, currentCharacter.evasion, currentCharacter.health, currentCharacter,character_id);
-            case classID === 3:
-                return new Mage(currentCharacter.character_name, currentCharacter.attack, currentCharacter.defense, currentCharacter.evasion, currentCharacter.health, currentCharacter,character_id);
-            case classID === 4:
-                return new Paladin(currentCharacter.character_name, currentCharacter.attack, currentCharacter.defense, currentCharacter.evasion, currentCharacter.health, currentCharacter,character_id);
-            case classID === 5:
-                return new Reaper(currentCharacter.character_name, currentCharacter.attack, currentCharacter.defense, currentCharacter.evasion, currentCharacter.health, currentCharacter,character_id);
-            case classID === 6:
-                return new Rogue(currentCharacter.character_name, currentCharacter.attack, currentCharacter.defense, currentCharacter.evasion, currentCharacter.health, currentCharacter,character_id);
+        let name = currentCharacter.character_name;
+        let attack = currentCharacter.attack;
+        let defense = currentCharacter.defense;
+        let evasion = currentCharacter.evasion;
+        let health = currentCharacter.health;
+        let char_id = currentCharacter.character_id;
+        if (classID === 1) {
+            return new Archer(name, attack, defense, evasion, health, char_id);
+        } else if (classID === 2) {
+            return new Gunslinger(name, attack, defense, evasion, health, char_id);
+        } else if (classID === 3) {
+            return new Mage(name, attack, defense, evasion, health, char_id);
+        } else if (classID === 4) {
+            return new Paladin(name, attack, defense, evasion, health, char_id);
+        } else if (classID === 5) {
+            return new Reaper(name, attack, defense, evasion, health, char_id);
+        } else if (classID === 6) {
+            return new Rogue(name, attack, defense, evasion, health, char_id);
         }
     }
-    console.log(`player: ${classType(currentCharacter.class_id)}`)
+    // console.log(currentCharacter.class_id);
+    // console.log(`player: ${JSON.stringify(classType(currentCharacter.class_id))}`)
     return player1 = classType(currentCharacter.class_id)
-
-    return player1 = {
-        character_name: currentCharacter.character_name,
-        attack: currentCharacter.attack,
-        defense: currentCharacter.defense,
-        evasion: currentCharacter.evasion,
-        health: currentCharacter.health
-    }
 };
 
 const setBossInfo = async (boss) => {
     bossAttack.innerText = boss.attack;
     bossDefense.innerText = boss.defense;
     bossEvasion.innerText = boss.evasion;
-    bossName.innerText = boss.character_name;
+    bossName.innerText = boss.name;
 }
 
-const probabilityCheck = (max, ratio1, ratio2, ratio3, ratio4, ratio5, ratio6, ratio7, ratio8, ratio9) => {
-    let digit = Math.floor(Math.random() * max + 1);
+// const probabilityCheck = (max, ratio1, ratio2, ratio3, ratio4, ratio5, ratio6, ratio7, ratio8, ratio9) => {
+//     let digit = Math.floor(Math.random() * max + 1);
   
-  function check(randomNum) {
-    if (randomNum <= ratio1) {
-        return 1;
-    } else if (randomNum <= ratio2) {
-        return 2;
-    } else if (randomNum <= ratio3) {
-        return 3;
-    } else if (randomNum <= ratio4) {
-        return 4;
-    } else if (randomNum <= ratio5) {
-        return 5;
-    } else if (randomNum <= ratio6) {
-        return 6
-    } else if (randomNum <= ratio7) {
-        return 7
-    } else if (randomNum <= ratio8) {
-        return 8
-    } else if (randomNum <= ratio9) {
-        return 9
-    } else if (randomNum <= max) {
-        return 10
-    }
-  }
-  return check(digit);
-}
+//   function check(randomNum) {
+//     if (randomNum <= ratio1) {
+//         return 1;
+//     } else if (randomNum <= ratio2) {
+//         return 2;
+//     } else if (randomNum <= ratio3) {
+//         return 3;
+//     } else if (randomNum <= ratio4) {
+//         return 4;
+//     } else if (randomNum <= ratio5) {
+//         return 5;
+//     } else if (randomNum <= ratio6) {
+//         return 6
+//     } else if (randomNum <= ratio7) {
+//         return 7
+//     } else if (randomNum <= ratio8) {
+//         return 8
+//     } else if (randomNum <= ratio9) {
+//         return 9
+//     } else if (randomNum <= max) {
+//         return 10
+//     }
+//   }
+//   return check(digit);
+// }
 
-//get action of card
-function getCardAction() {
-    const actionNumber = probabilityCheck(3, 1, 2);
+// //get action of card
+// function getCardAction() {
+//     const actionNumber = probabilityCheck(3, 1, 2);
 
-    if (actionNumber === 1) {
-        return "attack";
-    } else if (actionNumber === 2) {
-        return "defense";
-    } else if (actionNumber === 10) {
-        return "evasion";
-    }
-};
+//     if (actionNumber === 1) {
+//         return "attack";
+//     } else if (actionNumber === 2) {
+//         return "defense";
+//     } else if (actionNumber === 10) {
+//         return "evasion";
+//     }
+// };
 
-//get value of card
-function getCardValue() {
-    return probabilityCheck(100, 20, 38, 54, 68, 80, 90, 94, 97, 99);
-        // 20% of 1 
-        // 18% of 2
-        // 16% of 3
-        // 14% of 4
-        // 12% of 5
-        // 10% of 6
-        // 4% of 7
-        // 3% of 8
-        // 2% of 9
-        // 1% of 10
-    // return helper.probabilityCheck(10, 1, 2, 3, 4, 5, 6, 7, 8, 9);
-};
+// //get value of card
+// function getCardValue() {
+//     return probabilityCheck(100, 20, 38, 54, 68, 80, 90, 94, 97, 99);
+//         // 20% of 1 
+//         // 18% of 2
+//         // 16% of 3
+//         // 14% of 4
+//         // 12% of 5
+//         // 10% of 6
+//         // 4% of 7
+//         // 3% of 8
+//         // 2% of 9
+//         // 1% of 10
+//     // return helper.probabilityCheck(10, 1, 2, 3, 4, 5, 6, 7, 8, 9);
+// };
 
 const dealLeftCard = async () => {
     const cardONE = new Card(getCardAction(), getCardValue());

@@ -30,7 +30,7 @@ const probabilityCheck = (max, ratio1, ratio2, ratio3, ratio4, ratio5, ratio6, r
   return check(digit);
 }
 
-function characterCreate(charName, fighterChoice) {
+const characterCreate = (charName, fighterChoice) => {
     switch (fighterChoice) {
         case "Mage":
             charName = new Mage(fighterChoice, 7, 6, 7, 100);
@@ -54,7 +54,7 @@ function characterCreate(charName, fighterChoice) {
   }
 
   //get action of card
-function getCardAction() {
+const getCardAction = () => {
     const actionNumber = probabilityCheck(3, 1, 2);
 
     if (actionNumber === 1) {
@@ -67,7 +67,7 @@ function getCardAction() {
 };
 
 //get value of card
-function getCardValue() {
+const getCardValue = () => {
     return probabilityCheck(100, 20, 38, 54, 68, 80, 90, 94, 97, 99);
         // 20% of 1 
         // 18% of 2
