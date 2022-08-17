@@ -1,4 +1,6 @@
+
 import { getCardAction, getCardValue } from '../js/helpers.js';
+
 import Card from "./card.js";
 
 const card1Title = document.getElementById("card1Title");

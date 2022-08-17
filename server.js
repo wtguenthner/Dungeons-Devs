@@ -45,6 +45,9 @@ app.get("/", (req, res) => {
 });
 app.use('/',router);
 
+// app.get("/utils", (req, res) => {
+//   res.sendFile(path.join(__dirname, "utils", "helpers.js"));
+// })
 sequelize.sync({ force: false }).then(() => {
   app.listen(process.env.PORT || 3000, () => console.log(`Now listening on ${app.get('port')}`));
 });
