@@ -11,6 +11,10 @@ class Fighter {
         this.hp -= input;
     }
 
+    updateHealth(healthbar, value) {
+        healthbar.querySelector('playerHealthCurrent').style.width = `(${this.health} - ${value})%`
+    }
+
     attack(opponent) {
         const attackProb = probCheck(50, 47);
 
