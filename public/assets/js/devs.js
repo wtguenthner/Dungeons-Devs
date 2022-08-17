@@ -1,7 +1,18 @@
+const taylorAvi = document.getElementById("taylorAvi");
 const maceAvi = document.getElementById("maceoAvi");
 const sophiaAvi = document.getElementById("sophiaAvi");
 const mainBtn = document.getElementById("mmBtn");
-const mainText = document.getElementById("mainMenu")
+const mainText = document.getElementById("mainMenu");
+
+taylorAvi.onmouseover = function (event) {
+    event.preventDefault();
+    taylorAvi.src="./assets/img/deathknight.png";
+};
+
+taylorAvi.onmouseout = function (event) {
+    event.preventDefault();
+    taylorAvi.src="./assets/img/taylor.jpg";
+};
 
 maceAvi.onmouseover = function (event) {
     event.preventDefault();
