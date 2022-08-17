@@ -59,27 +59,27 @@ const getCardValue = () => {
     // return helper.probabilityCheck(10, 1, 2, 3, 4, 5, 6, 7, 8, 9);
 };
 
-function characterCreate(charName, fighterChoice) {
-    switch (fighterChoice) {
-        case "Mage":
-            charName = new Mage(fighterChoice, 7, 6, 7, 100);
-            break;
-        case "Archer":
-            charName = new Archer(fighterChoice, 6, 6, 8, 100);
-            break;
-        case "Gunslinger":
-            charName = new Gunslinger(fighterChoice, 8, 6, 6, 100);
-            break;
-        case "Reaper":
-            charName = new Reaper(fighterChoice, 7, 7, 6, 100);
-            break;
-        case "Rogue":
-            charName = new Rogue(fighterChoice, 7, 6, 7, 100);
-            break;
-        case "Paladin":
-            charName = new Paladin(fighterChoice, 8, 7, 5, 100);
-            break;
-    }
-  }
+// function characterCreate(charName, fighterChoice) {
+//     switch (fighterChoice) {
+//         case "Mage":
+//             charName = new Mage(fighterChoice, 7, 6, 7, 100);
+//             break;
+//         case "Archer":
+//             charName = new Archer(fighterChoice, 6, 6, 8, 100);
+//             break;
+//         case "Gunslinger":
+//             charName = new Gunslinger(fighterChoice, 8, 6, 6, 100);
+//             break;
+//         case "Reaper":
+//             charName = new Reaper(fighterChoice, 7, 7, 6, 100);
+//             break;
+//         case "Rogue":
+//             charName = new Rogue(fighterChoice, 7, 6, 7, 100);
+//             break;
+//         case "Paladin":
+//             charName = new Paladin(fighterChoice, 8, 7, 5, 100);
+//             break;
+//     }
+//   }
 
-export { probabilityCheck as default, getCardAction, getCardValue, characterCreate };
+export { probabilityCheck as default, getCardAction, getCardValue };

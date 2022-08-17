@@ -1,4 +1,4 @@
-// import { probabilityCheck, getCardAction, getCardValue } from '../../../utils/helpers.js';
+import { getCardAction, getCardValue } from './helpers.js'
 import Card from "./card.js";
 
 const card1Title = document.getElementById("card1Title");
