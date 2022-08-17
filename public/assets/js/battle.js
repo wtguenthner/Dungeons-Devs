@@ -1,4 +1,4 @@
-// import { probabilityCheck, getCardAction, getCardValue } from '../../../utils/helpers.js';
+import { getCardAction, getCardValue } from '../js/helpers.js';
 import Card from "./card.js";
 
 const card1Title = document.getElementById("card1Title");
@@ -10,14 +10,14 @@ const card3Val = document.getElementById("card3Val");
 const attack = document.querySelector("#playerAttackVal");
 const defense = document.querySelector("#playerDefenseVal");;
 const evasion = document.querySelector("#playerEvasionVal");;
-const portrait = document.querySelector('#playerPortrait')
+const portrait = document.querySelector('#playerCard-container')
 const player = document.querySelector("#playerUsername");
 const username = sessionStorage.getItem("username");
 player.innerHTML = `${username}`;
 const playerName = document.querySelector("#playerName");
 
 const init = async () => {
-  const currentUserData = await getUserData();
+  const currentUserData = await getUserData();      
 
   //Use this variable for attack/defense/evasion
   const currentCharacter = await getCharacterData(currentUserData.user_id);

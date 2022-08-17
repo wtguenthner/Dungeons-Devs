@@ -10,7 +10,7 @@ import session from 'express-session'
 import exphbs from 'express-handlebars'
 import {router} from './controllers/index.js'
 import sequelize from './config/connection.js';
-import helpers from './utils/helpers.js'
+import helpers from './public/assets/js/helpers.js'
 // import db from './models/index.js'
 
 import { fileURLToPath } from "url";
