@@ -2,9 +2,10 @@
     color: tan;
     font-family: Haettenschweiler;
     text-align: center;
-    -webkit-text-stroke: 1.5px wheat;
+    -webkit-text-stroke: 1.5px black;
     display: flex;
     justify-content: center;
+    cursor: default;
 }
 
 body {
@@ -13,7 +14,6 @@ body {
     background-attachment: fixed;
     background-position: unset;
     background-size: cover;
-
 }
 
 h1 {
@@ -67,3 +67,12 @@ h1 {
     display: none;
 }
 
+.container {
+    position: relative;
+    padding-top: 50px;
+}
+
+#mainMenu {
+    position: relative;
+    bottom: 34px;
+  }
