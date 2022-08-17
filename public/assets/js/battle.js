@@ -187,11 +187,13 @@ const dealRightCard = async () => {
     return cardTHREE;
 }
 
+// queryselectorall deckcard 
+
 const findParentByClass = (elem, className) => {
-    while (elem && !hasClass(elem, className)) {
-        elem = node.parentNode;
-    }
-    return elem;
+    // while (elem && !hasClass(className)) {
+    //     elem = elem.parentNode;
+    // }
+    // return elem;
 }
 
 const selectCard = async (e) => {

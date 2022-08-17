@@ -170,12 +170,21 @@ class Rogue extends Might {
 class Paladin extends Might {
     constructor(name, attack, defense, evasion, hp, id) {
         super(name);
-        this.attack = attack;
-        this.defense = defense;
-        this.evasion = evasion;
         this.hp = hp
         this.id = id
+        this.actions = {
+            attack: attack,
+            defense: defense,
+            evasion: evasion
+        }
+    }
+    updateAction(action, value) {
+        this.actions[action] += value;
+    }
+    resetAction(action, value) {
+        this.actions[action] -= value;
     }
 }
+// onclick e.currentTarget start from console.log
 
 export { Mage, Archer, Gunslinger, Reaper, Rogue, Paladin, Easy };
