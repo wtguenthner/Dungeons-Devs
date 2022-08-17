@@ -1,4 +1,6 @@
-import { getCardAction, getCardValue } from './helpers.js'
+
+import { getCardAction, getCardValue } from '../js/helpers.js';
+
 import Card from "./card.js";
 
 const card1Title = document.getElementById("card1Title");
@@ -17,7 +19,7 @@ player.innerHTML = `${username}`;
 const playerName = document.querySelector("#playerName");
 
 const init = async () => {
-  const currentUserData = await getUserData();
+  const currentUserData = await getUserData();      
 
   //Use this variable for attack/defense/evasion
   const currentCharacter = await getCharacterData(currentUserData.user_id);

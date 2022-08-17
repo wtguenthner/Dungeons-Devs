@@ -1,6 +1,5 @@
 import  Classes  from "../models/classes.js";
 
-
 const classData = [
   {
     class_id: 1,
