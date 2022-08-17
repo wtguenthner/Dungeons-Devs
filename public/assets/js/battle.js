@@ -1,4 +1,8 @@
-// import probabilityCheck from '../../../utils/helpers.js';
+// import { probabilityCheck, getCardAction, getCardValue } from '../../../utils/helpers.js';
+import { Rogue, Paladin } from '../../../models/might.js';
+import { Mage, Reaper } from '../../../models/magic.js';
+import { Archer, Gunslinger } from '../../../models/range.js';
+import { Easy } from '../../../models/boss.js';
 import Card from "./card.js";
 const card1 = document.getElementById('Card1');
 const card1Title = document.getElementById("card1Title");
@@ -25,13 +29,8 @@ const bossName = document.getElementById('bossName');
 const playerHealthbar = document.getElementById('playerHealthCurrent');
 
 let player1;
-const boss = {
-    character_name: 'Stanley',
-    attack: 10,
-    defense: 10,
-    evasion: 10,
-    health: 100,
-};
+const boss = new Easy('Stanley', 10, 10, 10, 100, 'stanmanga78Docker');
+console.log(boss);
 
 card1.addEventListener('click', (e) => selectCard(e));
 card2.addEventListener('click', (e) => selectCard(e));
@@ -45,10 +44,8 @@ const getUserData = async () => {
     })
         .then((response) => response.json())
         .then((data) => {
-
             return data;
         });
-
 };
 
 const getCharacterData = async (user_id) => {
@@ -82,6 +79,25 @@ const setCharacterInfo = async () => {
     defense.innerText = currentCharacter.defense;
     evasion.innerText = currentCharacter.evasion;
     portrait.innerHTML = `<img id="playerPortrait" class="cardPortrait" src="${currentCharacter.class_avatar}" alt="player's character portrait">`
+    
+    const classType = (classID) => {
+        switch (classID) {
+            case classID === 1:
+                return new Archer(currentCharacter.character_name, currentCharacter.attack, currentCharacter.defense, currentCharacter.evasion, currentCharacter.health, currentCharacter,character_id);
+            case classID === 2:
+                return new Gunslinger(currentCharacter.character_name, currentCharacter.attack, currentCharacter.defense, currentCharacter.evasion, currentCharacter.health, currentCharacter,character_id);
+            case classID === 3:
+                return new Mage(currentCharacter.character_name, currentCharacter.attack, currentCharacter.defense, currentCharacter.evasion, currentCharacter.health, currentCharacter,character_id);
+            case classID === 4:
+                return new Paladin(currentCharacter.character_name, currentCharacter.attack, currentCharacter.defense, currentCharacter.evasion, currentCharacter.health, currentCharacter,character_id);
+            case classID === 5:
+                return new Reaper(currentCharacter.character_name, currentCharacter.attack, currentCharacter.defense, currentCharacter.evasion, currentCharacter.health, currentCharacter,character_id);
+            case classID === 6:
+                return new Rogue(currentCharacter.character_name, currentCharacter.attack, currentCharacter.defense, currentCharacter.evasion, currentCharacter.health, currentCharacter,character_id);
+        }
+    }
+    console.log(`player: ${classType(currentCharacter.class_id)}`)
+    return player1 = classType(currentCharacter.class_id)
 
     return player1 = {
         character_name: currentCharacter.character_name,
@@ -157,28 +173,23 @@ function getCardValue() {
     // return helper.probabilityCheck(10, 1, 2, 3, 4, 5, 6, 7, 8, 9);
 };
 
-const dealCards = async () => {
-        //draw 3 cards
-    //card.printCard() returns [action, value] that needs to be printed on card 1
+const dealLeftCard = async () => {
     const cardONE = new Card(getCardAction(), getCardValue());
     card1Title.innerText = cardONE.action;
     card1Val.innerText = `+${cardONE.value}`;
-    
-    //print card1.action and card1.value to DOM
-
-    //card.printCard() returns [action, value] that needs to be printed on card 2
+    return cardONE;
+}
+const dealMiddleCard = async () => {
     const cardTWO = new Card(getCardAction(), getCardValue());
     card2Title.innerText = cardTWO.action;
     card2Val.innerText = `+${cardTWO.value}`;
-    //print card2.action and card2.value to DOM
-
-    //card.printCard() returns [action, value] that needs to be printed on card 3
+    return cardTWO;
+}
+const dealRightCard = async () => {
     const cardTHREE = new Card(getCardAction(), getCardValue());
-    console.log(cardTHREE);
     card3Title.innerText = cardTHREE.action;
     card3Val.innerText = `+${cardTHREE.value}`;
-    //print card3.action and card3.value to DOM
-
+    return cardTHREE;
 }
 
 const findParentByClass = (elem, className) => {
@@ -234,7 +245,9 @@ const battle = async (player, opponent) => {
 const init = async () => {
     setCharacterInfo();
     setBossInfo(boss);
-    dealCards();
+    dealLeftCard();
+    dealMiddleCard();
+    dealRightCard();
     battle(player1, boss);
 };
 init();
