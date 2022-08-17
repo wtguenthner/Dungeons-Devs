@@ -41,7 +41,7 @@ class Card {
     };
 }
 
-export { Card as default };
+export default Card;
 
 
 

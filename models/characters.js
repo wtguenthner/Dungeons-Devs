@@ -54,7 +54,7 @@ class Character extends Model {
     }
 }
 
-Character.init(
+Characters.init(
     {
         character_id:
         {
@@ -66,7 +66,7 @@ Character.init(
         user_id:
         {
             type: DataTypes.UUID,
-            allowNull: false,
+            allowNull: true,
           
         },
         class_id: {
@@ -111,15 +111,19 @@ Character.init(
             type: DataTypes.INTEGER,
             allowNull: true,
             defaultValue:0
-        }
+        },
+        class_avatar: {
+            type: DataTypes.STRING,
+            allowNull:true
+          },
     },
     {
         sequelize,
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'character',
+        modelName: 'characters',
     }
 )
 
-export default Character;
+export default Characters;
