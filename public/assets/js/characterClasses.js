@@ -1,5 +1,7 @@
 import { default as probabilityCheck, getCardAction, getCardValue } from '../../utils/helpers.js';
 import Card from './card.js';
+const playerHealthbar = document.getElementById('playerHealthCurrent');
+const bossHealthbar = document.getElementById('bossHealthCurrent');
 
 class Fighter {
     constructor(name) {
@@ -7,24 +9,33 @@ class Fighter {
         this.hasProp = false;
     }
 
-    attack(opponent) {
+    attack(opponent, healthbar) {
         const attackProb = probabilityCheck(50, 47);
 
         switch (attackProb) {
             case 1:
-                // console.log(opponent.actions.defense);
-                opponent.takeDamage(this.actions.attack - opponent.actions.defense)
+                let damage = this.actions.attack - opponent.actions.defense;
+                opponent.takeDamage(damage);
+                this.updateHealth(healthbar, damage, opponent);
                 break;
             case 10:
-                opponent.takeDamage((this.actions.attack * 1.8) - opponent.actions.defense)
+                let critDamage = (this.actions.attack * 1.8) - opponent.actions.defense;
+                opponent.takeDamage(critDamage);
                 attackProb.message === 'Critical Hit!'
+                this.updateHealth(healthbar, critDamage, opponent);
                 break;
         }
         return attackProb
     }
 
     takeDamage(input) {
-        this.hp = parseInt(this.hp) - parseInt(input);
+        if(parseInt(input) < 0) {
+            return;
+        } else {
+            let newHealth = parseInt(this.hp) - parseInt(input);
+            console.log(newHealth);
+            this.hp = newHealth;
+        }
     }
 
     updateAction(action, value) {
@@ -35,35 +46,55 @@ class Fighter {
         this.actions[action] = parseInt(this.actions[action]) - parseInt(value);
     }
 
-    // updateHealth(healthbar, value) {
-    //     healthbar.querySelector('playerHealthCurrent').style.width = `(${this.health} - ${value})%`
-    // }
+    updateHealth(healthbar, value, opponent) {
+        if (value <= 0) {
+            return;
+        } else {
+            let healthbarPercent = `${parseInt(opponent.hp)}%`;
+            console.log(healthbarPercent);
+            if (healthbar.id === "playerHealthCurrent") {
+                playerHealthbar.style.width = healthbarPercent;
+            } else if (healthbar.id === "bossHealthCurrent") {
+                bossHealthbar.style.width = healthbarPercent;
+            }
+        }
+    }
 
     defend() {
         const defendProb = probabilityCheck(50, 35, 47);
 
         switch (defendProb) {
-            case defendProb === 1:
-                this.actions.defense += (this.actions.defense * .5)
+            case 1:
+                let boostedDefense = this.actions.defense * .5
+                this.actions.defense = this.actions.defense + boostedDefense;
                 break;
-            case defendProb === 2:
-                this.actions.defense += (this.actions.defense * .75)
+            case 2:
+                let boostederDefense = this.actions.defense * .75
+                this.actions.defense = this.actions.defense + boostederDefense;
                 break;
-            case defendProb === 10:
-                this.actions.defense += this.actions.defense
+            case 10:
+                return;
                 break;
         }
     }
     
     evade() {
-        return probabilityCheck(40, this.evasion);
+        const evadeProb= probabilityCheck(40, this.actions.evasion);
+
+        switch (evadeProb) {
+            case 1:
+                this.actions.defense = this.actions.defense + 100;
+                break;
+            case 10:
+                return;
+        }
     }
 
-    bossTurn(boss, player) {
+    bossTurn(boss, player, healthbar) {
         if (boss.hp <= (boss.hp * .75)) {
             let probOfAttack = probabilityCheck(50, 38);
             if (probOfAttack === 1) {
-                boss.attack(player);
+                boss.attack(player, healthbar);
 
             } else if (probOfAttack === 10) {
                 boss.defend();
@@ -71,13 +102,13 @@ class Fighter {
         } else if (boss.hp <= (boss.hp * .5)) {
             let probOfAttack = probabilityCheck(50, 20);
             if (probOfAttack === 1) {
-                boss.attack(player);
+                boss.attack(player, healthbar);
 
             } else if (probOfAttack === 10) {
                 boss.defend();
             }
         } else {
-            boss.attack(player);
+            boss.attack(player, healthbar);
         }
     }
 }
