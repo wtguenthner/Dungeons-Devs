@@ -141,7 +141,7 @@ h5 {
 #playerHealthCurrent {
     width: 100%;
     height: 100%;
-    background: red;
+    background: rgb(237, 57, 17);
 }
 
 #bossHealthbar-container {
@@ -168,8 +168,8 @@ h5 {
 }
 
 #bossHealthCurrent {
-  width: 176px;
-  height: 14px;
+  width: 100%;
+  height: 100%;
   background-color: rgb(237, 57, 17);
 }
 
