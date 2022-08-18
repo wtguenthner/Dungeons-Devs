@@ -61,7 +61,6 @@ main {
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
-  height: fit-content;
 }
 
 #bossCard-container {
@@ -73,17 +72,17 @@ main {
   display: flex;
   justify-content: space-around;
 }
-#playerStat-container {
-  margin-top: 140%;
-}
+
 .cardTitle-container {
   font-size: 0.75rem;
 }
 
 .cardPortrait {
-  width: 60px;
-  margin: auto;
+    height: 82px;
+    width: 60px;
+    margin: auto;
 }
+
 #playerPortait {
   margin: -30px auto auto 12px;
 }
@@ -131,18 +130,18 @@ h5 {
 }
 
 #playerHealthbar {
-  width: 76px;
-  height: 10px;
-  background-color: var(--clr-primary);
-  display: flex;
-  text-align: center;
-  align-items: center;
+    width: 76px;
+    height: 10px;
+    background: var(--clr-primary);
+    display: flex;
+    text-align: center;
+    align-items: center;
 }
 
 #playerHealthCurrent {
-  width: 50px;
-  height: 8px;
-  background-color: rgb(237, 57, 17);
+    width: 100%;
+    height: 100%;
+    background: red;
 }
 
 #bossHealthbar-container {
@@ -187,5 +186,8 @@ h5 {
   align-items: center;
   flex-direction: column;
   color: rgb(205, 154, 128);
+}
+
+.hide {
   visibility: hidden;
 }

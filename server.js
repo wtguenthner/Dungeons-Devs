@@ -10,7 +10,7 @@ import session from 'express-session'
 import exphbs from 'express-handlebars'
 import {router} from './controllers/index.js'
 import sequelize from './config/connection.js';
-import helpers from './public/assets/js/helpers.js'
+import helpers from './public/utils/helpers.js'
 // import db from './models/index.js'
 
 import { fileURLToPath } from "url";
@@ -43,6 +43,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
+
 app.use('/',router);
 
 // app.get("/utils", (req, res) => {

@@ -30,9 +30,32 @@ const probabilityCheck = (max, ratio1, ratio2, ratio3, ratio4, ratio5, ratio6, r
   return check(digit);
 }
 
-//get action of card
+const characterCreate = (charName, fighterChoice) => {
+    switch (fighterChoice) {
+        case "Mage":
+            charName = new Mage(fighterChoice, 7, 6, 7, 100);
+            break;
+        case "Archer":
+            charName = new Archer(fighterChoice, 6, 6, 8, 100);
+            break;
+        case "Gunslinger":
+            charName = new Gunslinger(fighterChoice, 8, 6, 6, 100);
+            break;
+        case "Reaper":
+            charName = new Reaper(fighterChoice, 7, 7, 6, 100);
+            break;
+        case "Rogue":
+            charName = new Rogue(fighterChoice, 7, 6, 7, 100);
+            break;
+        case "Paladin":
+            charName = new Paladin(fighterChoice, 8, 7, 5, 100);
+            break;
+    }
+  }
+
+  //get action of card
 const getCardAction = () => {
-    const actionNumber = helper.probabilityCheck(3, 1, 2);
+    const actionNumber = probabilityCheck(3, 1, 2);
 
     if (actionNumber === 1) {
         return "attack";
@@ -45,7 +68,7 @@ const getCardAction = () => {
 
 //get value of card
 const getCardValue = () => {
-    return helper.probabilityCheck(100, 20, 38, 54, 68, 80, 90, 94, 97, 99);
+    return probabilityCheck(100, 20, 38, 54, 68, 80, 90, 94, 97, 99);
         // 20% of 1 
         // 18% of 2
         // 16% of 3

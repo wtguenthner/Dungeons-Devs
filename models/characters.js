@@ -4,7 +4,7 @@
 import {Model, DataTypes, Sequelize} from 'sequelize';
 import sequelize from '../config/connection.js';  
 
-class Characters extends Model { }
+class Characters extends Model {}
 
 Characters.init(
     {
