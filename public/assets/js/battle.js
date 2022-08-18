@@ -24,7 +24,12 @@ const bossEvasion = document.getElementById('bossEvasionVal');
 const bossPortrait = document.getElementById('bossPortrait');
 const bossName = document.getElementById('bossName');
 const playerHealthbar = document.getElementById('playerHealthCurrent');
+const turnOptions = document.getElementById('turnOptions-container');
+const attackButton = document.getElementById('attackOption');
+const defendButton = document.getElementById('defendOption');
 
+
+let playedCard;
 let player1;
 const boss = new Easy('Stanley', 10, 10, 10, 100, 'stanmanga78Docker');
 console.log(boss);
@@ -32,6 +37,8 @@ console.log(boss);
 card1.addEventListener('click', (e) => selectCard(e));
 card2.addEventListener('click', (e) => selectCard(e));
 card3.addEventListener('click', (e) => selectCard(e));
+attackButton.addEventListener('click', () => attackTurn());
+defendButton.addEventListener('click', () => defendTurn());
 
 const getUserData = async () => {
     return await fetch(`/api/users/${username}`, {
@@ -99,74 +106,16 @@ const setCharacterInfo = async () => {
         }
     }
     // console.log(currentCharacter.class_id);
-    // console.log(`player: ${JSON.stringify(classType(currentCharacter.class_id))}`)
+    console.log(`player: ${JSON.stringify(classType(currentCharacter.class_id))}`)
     return player1 = classType(currentCharacter.class_id)
 };
 
 const setBossInfo = async (boss) => {
-    bossAttack.innerText = boss.attack;
-    bossDefense.innerText = boss.defense;
-    bossEvasion.innerText = boss.evasion;
+    bossAttack.innerText = boss.actions.attack;
+    bossDefense.innerText = boss.actions.defense;
+    bossEvasion.innerText = boss.actions.evasion;
     bossName.innerText = boss.name;
 }
-
-// const probabilityCheck = (max, ratio1, ratio2, ratio3, ratio4, ratio5, ratio6, ratio7, ratio8, ratio9) => {
-//     let digit = Math.floor(Math.random() * max + 1);
-  
-//   function check(randomNum) {
-//     if (randomNum <= ratio1) {
-//         return 1;
-//     } else if (randomNum <= ratio2) {
-//         return 2;
-//     } else if (randomNum <= ratio3) {
-//         return 3;
-//     } else if (randomNum <= ratio4) {
-//         return 4;
-//     } else if (randomNum <= ratio5) {
-//         return 5;
-//     } else if (randomNum <= ratio6) {
-//         return 6
-//     } else if (randomNum <= ratio7) {
-//         return 7
-//     } else if (randomNum <= ratio8) {
-//         return 8
-//     } else if (randomNum <= ratio9) {
-//         return 9
-//     } else if (randomNum <= max) {
-//         return 10
-//     }
-//   }
-//   return check(digit);
-// }
-
-// //get action of card
-// function getCardAction() {
-//     const actionNumber = probabilityCheck(3, 1, 2);
-
-//     if (actionNumber === 1) {
-//         return "attack";
-//     } else if (actionNumber === 2) {
-//         return "defense";
-//     } else if (actionNumber === 10) {
-//         return "evasion";
-//     }
-// };
-
-// //get value of card
-// function getCardValue() {
-//     return probabilityCheck(100, 20, 38, 54, 68, 80, 90, 94, 97, 99);
-//         // 20% of 1 
-//         // 18% of 2
-//         // 16% of 3
-//         // 14% of 4
-//         // 12% of 5
-//         // 10% of 6
-//         // 4% of 7
-//         // 3% of 8
-//         // 2% of 9
-//         // 1% of 10
-//     // return helper.probabilityCheck(10, 1, 2, 3, 4, 5, 6, 7, 8, 9);
-// };
 
 const dealLeftCard = async () => {
     const cardONE = new Card(getCardAction(), getCardValue());
@@ -187,30 +136,102 @@ const dealRightCard = async () => {
     return cardTHREE;
 }
 
-// queryselectorall deckcard 
-
-const findParentByClass = (elem, className) => {
-    // while (elem && !hasClass(className)) {
-    //     elem = elem.parentNode;
-    // }
-    // return elem;
-}
-
-const selectCard = async (e) => {
-    switch (e) {
-        case e === card1Title || e === card1Val || e === card1:
-            card1.style.scale = 1.3;
-            break;
-        case e === card2Title || e === card2Val || e === card2:
-            card2.style.scale = 1.3;
-            break;
-        case e === card3Title || e === card3Val || e === card3:
-            card3.style.scale = 1.3;
-            break;
+const disableCard = async (cardID) => {
+    if (cardID === "Card1") {
+        card1.setAttribute('disabled', '');
+        card2.removeAttribute('disabled');
+        card3.removeAttribute('disabled');
+    } else if (cardID === "Card2") {
+        card1.removeAttribute('disabled');
+        card2.setAttribute('disabled', '');
+        card3.removeAttribute('disabled');
+    } else {
+        card1.removeAttribute('disabled');
+        card2.removeAttribute('disabled');
+        card3.setAttribute('disabled', '');
     }
 }
 
-// setCharacterName();
+const scaleCard = async (cardID) => {
+    if (cardID === "Card1") {
+        card1.style.scale = 1.2;
+        card2.style.scale = 1;
+        card3.style.scale = 1;
+    } else if (cardID === "Card2") {
+        card1.style.scale = 1;
+        card2.style.scale = 1.2;
+        card3.style.scale = 1;
+    } else {
+        card1.style.scale = 1;
+        card2.style.scale = 1;
+        card3.style.scale = 1.2;
+    }
+}
+
+const selectCard = async (e) => {
+    let selectedCard = e.currentTarget;
+    let cardAction = selectedCard.querySelector('h4').innerText;
+    let cardValue = selectedCard.querySelector('h5').innerText.substring(1);
+
+    if (cardAction === "attack") {
+        attack.innerText = (parseInt(attack.innerText) + parseInt(cardValue));
+        defense.innerText = player1.actions.defense;
+        evasion.innerText = player1.actions.evasion;
+        disableCard(selectedCard.id);
+        scaleCard(selectedCard.id);
+    } else if (cardAction === "defense") {
+        defense.innerText = (parseInt(defense.innerText) + parseInt(cardValue));
+        evasion.innerText = player1.actions.evasion;
+        attack.innerText = player1.actions.attack;
+        disableCard(selectedCard.id);
+        scaleCard(selectedCard.id);
+    } else {
+        evasion.innerText = (parseInt(evasion.innerText) + parseInt(cardValue));
+        defense.innerText = player1.actions.defense;
+        attack.innerText = player1.actions.attack;
+        disableCard(selectedCard.id);
+        scaleCard(selectedCard.id);
+    }
+
+    turnOptions.classList.remove('hide');
+    console.log(player1);
+    return playedCard = { action: cardAction, value: cardValue };
+}
+
+const attackTurn = async () => {
+    player1.updateAction(playedCard.action, playedCard.value);
+    player1.attack(boss);
+    boss.bossTurn(boss, player1);
+    console.log(player1);
+    console.log(boss);
+}
+
+const defendTurn = async () => {
+
+}
+
+// const bossTurn = async (opponent, player) =>  {
+//     if (opponent.hp <= (opponent.hp * .75)) {
+//         let probOfAttack = probabilityCheck(50, 38);
+//         if (probOfAttack === 1) {
+//             opponent.attack(player);
+
+//         } else if (probOfAttack === 10) {
+//             opponent.defend();
+//         }
+//     } else if (opponent.hp <= (opponent.hp * .5)) {
+//         let probOfAttack = probabilityCheck(50, 20);
+//         if (probOfAttack === 1) {
+//             opponent.attack(player);
+
+//         } else if (probOfAttack === 10) {
+//             opponent.defend();
+//         }
+//     } else {
+//         opponent.attack(player);
+//     }
+// }
+
 const battle = async (player, opponent) => {
     //select card to play
     //on event "click" emphasis goes to selected card (maybe by enlarging it), and play buttons(attack, defend) become visible.

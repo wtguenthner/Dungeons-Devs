@@ -61,7 +61,6 @@ main {
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
-  height: fit-content;
 }
 
 #bossCard-container {
@@ -73,43 +72,19 @@ main {
   display: flex;
   justify-content: space-around;
 }
-#playerStat-container {
-  margin-top: 140%;
-}
+
 .cardTitle-container {
   font-size: 0.75rem;
 }
 
 .cardPortrait {
-<<<<<<< HEAD
-<<<<<<< HEAD
     height: 82px;
-=======
-    
->>>>>>> 9ecfafa796a2a9294cc5aef390b7aa3f73b4a6a3
     width: 60px;
     margin: auto;
-    
 }
-#playerPortait{
-<<<<<<< HEAD
-    width: auto;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-=======
-    width:auto;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
->>>>>>> 9ecfafa796a2a9294cc5aef390b7aa3f73b4a6a3
-=======
-  width: 60px;
-  margin: auto;
-}
+
 #playerPortait {
   margin: -30px auto auto 12px;
->>>>>>> 9ba214def3b03da5b9436bc7cc54f5a82cad5bf5
 }
 
 #playerDeck {
@@ -155,7 +130,6 @@ h5 {
 }
 
 #playerHealthbar {
-<<<<<<< HEAD
     width: 76px;
     height: 10px;
     background: var(--clr-primary);
@@ -169,27 +143,6 @@ h5 {
     height: 100%;
     background: red;
 }
-
-/* #playerHealthCurrent {
-    width: 50px;
-    height: 8px;
-    background-color: rgb(237, 57, 17);
-} */
-=======
-  width: 76px;
-  height: 10px;
-  background-color: var(--clr-primary);
-  display: flex;
-  text-align: center;
-  align-items: center;
-}
-
-#playerHealthCurrent {
-  width: 50px;
-  height: 8px;
-  background-color: rgb(237, 57, 17);
-}
->>>>>>> 9ba214def3b03da5b9436bc7cc54f5a82cad5bf5
 
 #bossHealthbar-container {
   position: absolute;
@@ -233,5 +186,8 @@ h5 {
   align-items: center;
   flex-direction: column;
   color: rgb(205, 154, 128);
+}
+
+.hide {
   visibility: hidden;
 }
