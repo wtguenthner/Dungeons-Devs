@@ -27,4 +27,4 @@ const startMatch = () =>{
 
 document
 .querySelector("#startmatch")
-.addEventListener("submit", startMatch, audio.play());
+.addEventListener("submit", startMatch);
