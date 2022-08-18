@@ -1,6 +1,7 @@
 import { default as probabilityCheck, getCardAction, getCardValue } from '../../utils/helpers.js';
 import { Mage, Archer, Gunslinger, Reaper, Rogue, Paladin, Easy } from './characterClasses.js';
 import Card from "./card.js";
+
 const card1 = document.getElementById('Card1');
 const card1Title = document.getElementById("card1Title");
 const card1Val = document.getElementById("card1Val");
