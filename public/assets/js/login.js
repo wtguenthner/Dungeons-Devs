@@ -25,8 +25,9 @@ const loginFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace("/battle.html");
+  
       sessionStorage.setItem("username", `${username}`)
+      document.location.replace("/menu.html");
       
     } else {
       alert("Failed to log in.");
@@ -37,6 +38,8 @@ const loginFormHandler = async (event) => {
 const signupFormHandler = async (event) => {
   event.preventDefault();
   document.location.replace(`/characterCreation.html`);
+  
+  
 };
 
 document

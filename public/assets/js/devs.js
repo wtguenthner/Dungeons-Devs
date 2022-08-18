@@ -1,22 +1,43 @@
-var maceAvi = document.getElementById("maceoAvi")
-var sophiaAvi = document.getElementById("sophiaAvi")
+const taylorAvi = document.getElementById("taylorAvi");
+const maceAvi = document.getElementById("maceoAvi");
+const sophiaAvi = document.getElementById("sophiaAvi");
+const mainBtn = document.getElementById("mmBtn");
+const mainText = document.getElementById("mainMenu");
 
-maceAvi.addEventListener('mouseover', function (event) {
+taylorAvi.onmouseover = function (event) {
+    event.preventDefault();
+    taylorAvi.src="./assets/img/deathknight.png";
+};
+
+taylorAvi.onmouseout = function (event) {
+    event.preventDefault();
+    taylorAvi.src="./assets/img/taylor.jpg";
+};
+
+maceAvi.onmouseover = function (event) {
     event.preventDefault();
     maceoAvi.src="./assets/img/shogo.jpg";
-})
+};
 
-maceAvi.addEventListener('mouseout', function (event) {
+maceAvi.onmouseout = function (event) {
     event.preventDefault();
     maceoAvi.src="./assets/img/maceo.jpg";
-})
+};
 
-sophiaAvi.addEventListener('mouseover', function (event) {
+sophiaAvi.onmouseover = function (event) {
     event.preventDefault();
     sophiaAvi.src="./assets/img/darkknight.png"
-})
+};
 
-sophiaAvi.addEventListener('mouseout', function (event) {
+sophiaAvi.onmouseout = function (event) {
     event.preventDefault();
     sophiaAvi.src="./assets/img/sophia.jpeg"
-})
+};
+
+mainBtn.onclick = function () {
+    location.href = "menu.html"
+};
+
+mainText.onclick = function() {
+    location.href = "menu.html"
+}
