@@ -25,6 +25,7 @@ const bossEvasion = document.getElementById('bossEvasionVal');
 const bossPortrait = document.getElementById('bossPortrait');
 const bossName = document.getElementById('bossName');
 const playerHealthbar = document.getElementById('playerHealthCurrent');
+const bossHealthbar = document.getElementById('bossHealthCurrent');
 const turnOptions = document.getElementById('turnOptions-container');
 const attackButton = document.getElementById('attackOption');
 const defendButton = document.getElementById('defendOption');
@@ -32,7 +33,7 @@ const defendButton = document.getElementById('defendOption');
 
 let playedCard;
 let player1;
-const boss = new Easy('Stanley', 10, 10, 10, 100, 'stanmanga78Docker');
+const boss = new Easy('Stanley', 8, 8, 4, 100, 'stanmanga78Docker');
 console.log(boss);
 
 card1.addEventListener('click', (e) => selectCard(e));
@@ -122,18 +123,24 @@ const dealLeftCard = async () => {
     const cardONE = new Card(getCardAction(), getCardValue());
     card1Title.innerText = cardONE.action;
     card1Val.innerText = `+${cardONE.value}`;
+    card1.style.scale = 1;
+    card1.removeAttribute('disabled');
     return cardONE;
 }
 const dealMiddleCard = async () => {
     const cardTWO = new Card(getCardAction(), getCardValue());
     card2Title.innerText = cardTWO.action;
     card2Val.innerText = `+${cardTWO.value}`;
+    card2.style.scale = 1;
+    card2.removeAttribute('disabled');
     return cardTWO;
 }
 const dealRightCard = async () => {
     const cardTHREE = new Card(getCardAction(), getCardValue());
     card3Title.innerText = cardTHREE.action;
     card3Val.innerText = `+${cardTHREE.value}`;
+    card3.style.scale = 1;
+    card3.removeAttribute('disabled');
     return cardTHREE;
 }
 
@@ -196,19 +203,60 @@ const selectCard = async (e) => {
 
     turnOptions.classList.remove('hide');
     console.log(player1);
-    return playedCard = { action: cardAction, value: cardValue };
+    return playedCard = { action: cardAction, value: cardValue, card_id: selectedCard.id };
+}
+
+const resetStats = async () => {
+    console.log(playedCard);
+    turnOptions.classList.add('hide');
+    if (boss.actions.defense > 100) {
+        boss.actions.defense = boss.actions.defense - 100;        
+    }
+    if (player1.actions.defense > 100) {
+        player1.actions.defense = player1.actions.defense - 100;
+    }
+    if (playedCard.action === "attack") {
+        attack.innerText = (parseInt(attack.innerText) - parseInt(playedCard.value));
+    } else if (playedCard.action === "defense") {
+        defense.innerText = (parseInt(defense.innerText) - parseInt(playedCard.value));
+    } else {
+        evasion.innerText = (parseInt(evasion.innerText) - parseInt(playedCard.value));
+    }
+}
+
+const redraw = async () => {
+    if (playedCard.card_id === "Card1") {
+        dealLeftCard();
+    } else if (playedCard.card_id === "Card2") {
+        dealMiddleCard();
+    } else {
+        dealRightCard();
+    }
 }
 
 const attackTurn = async () => {
     player1.updateAction(playedCard.action, playedCard.value);
-    player1.attack(boss);
-    boss.bossTurn(boss, player1);
+    boss.evade();
+    player1.attack(boss, bossHealthbar);
+    player1.evade();
+    boss.bossTurn(boss, player1, playerHealthbar);
+    player1.resetAction(playedCard.action, playedCard.value);
     console.log(player1);
     console.log(boss);
+    resetStats();
+    redraw();
 }
 
 const defendTurn = async () => {
-
+    player1.updateAction(playedCard.action, playedCard.value);
+    player1.defend();
+    player1.evade();
+    boss.bossTurn(boss, player1, playerHealthbar);
+    player1.resetAction(playedCard.action, playedCard.value);
+    console.log(player1);
+    console.log(boss);
+    resetStats();
+    redraw();
 }
 
 // const bossTurn = async (opponent, player) =>  {
