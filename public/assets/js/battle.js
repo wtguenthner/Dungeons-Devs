@@ -32,7 +32,8 @@ const bossHealthbar = document.getElementById('bossHealthCurrent');
 const turnOptions = document.getElementById('turnOptions-container');
 const attackButton = document.getElementById('attackOption');
 const defendButton = document.getElementById('defendOption');
-
+const ruleBtn = document.getElementById('ruleBtn');
+const ruleScroll = document.getElementById('howToPlay-container');
 
 let playedCard;
 let player1;
@@ -332,3 +333,11 @@ init();
 // let Kevin = new Paladin("Kevin", 8, 7, 5, 100);
 // let boss = new Easy("Mob Assassin", 7, 6, 7, 100);
 // battle(Kevin, boss)
+
+ruleBtn.onclick = function() {
+    if (ruleScroll.style.visibility === "hidden") {
+        ruleScroll.style.visibility = "visible";
+    } else {
+        ruleScroll.style.visibility = "hidden";
+    }
+};
