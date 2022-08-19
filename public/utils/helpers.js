@@ -68,7 +68,7 @@ const getCardAction = () => {
 
 //get value of card
 const getCardValue = () => {
-    return probabilityCheck(100, 20, 38, 54, 68, 80, 90, 94, 97, 99);
+    return probabilityCheck(100, 20, 38, 54, 68, 80, 90, 95, 98);
         // 20% of 1 
         // 18% of 2
         // 16% of 3
