@@ -60,10 +60,18 @@ h1 {
     }
 }
 
+#sevenDaysAvi {
+    display: none;
+}
+
 #deathknight {
     display: none;
 }
 #darkknight {
+    display: none;
+}
+
+#bizbab {
     display: none;
 }
 
