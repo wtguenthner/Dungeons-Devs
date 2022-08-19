@@ -83,6 +83,7 @@ const setCharacterInfo = async () => {
     //Use this variable for attack/defense/evasion
     const currentCharacter = await getCharacterData(currentUserData.user_id);
     // console.log(currentCharacter)
+   
     playerName.innerText = currentCharacter.character_name;
     attack.innerText = currentCharacter.attack;
     defense.innerText = currentCharacter.defense;
