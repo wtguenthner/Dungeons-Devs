@@ -1,5 +1,8 @@
 import { default as probabilityCheck, getCardAction, getCardValue } from '../../utils/helpers.js';
 import Card from './card.js';
+const playerHealthbar = document.getElementById('playerHealthCurrent');
+const bossHealthbar = document.getElementById('bossHealthCurrent');
+const gameLog = document.getElementById('gameLog');
 
 class Fighter {
     constructor(name) {
@@ -7,24 +10,37 @@ class Fighter {
         this.hasProp = false;
     }
 
-    attack(opponent) {
+    attack(opponent, healthbar, attacker) {
         const attackProb = probabilityCheck(50, 47);
 
         switch (attackProb) {
             case 1:
-                // console.log(opponent.actions.defense);
-                opponent.takeDamage(this.actions.attack - opponent.actions.defense)
+                let damage = this.actions.attack - opponent.actions.defense;
+                opponent.takeDamage(opponent.name, damage, attacker.name);
+                this.updateHealth(healthbar, damage, opponent);
                 break;
             case 10:
-                opponent.takeDamage((this.actions.attack * 1.8) - opponent.actions.defense)
-                attackProb.message === 'Critical Hit!'
+                let critDamage = (this.actions.attack * 1.8) - opponent.actions.defense;
+                opponent.takeDamage(opponent.name, critDamage, attacker.name);
+                this.updateHealth(healthbar, critDamage, opponent);
                 break;
         }
         return attackProb
     }
 
-    takeDamage(input) {
-        this.hp = parseInt(this.hp) - parseInt(input);
+    resetStats() {
+        this.actions = {...this.baseStats};
+    }
+
+    takeDamage(opponentName, input, attackerName) {
+        if(parseInt(input) <= 0) {
+            return;
+        } else {
+            let newHealth = parseInt(this.hp) - parseInt(input);
+            // messageContainer.innerHTML = `<p class="message">${attackerName} hit ${opponentName} for ${parseInt(input)}!</p>`;
+            console.log(newHealth);
+            this.hp = newHealth;
+        }
     }
 
     updateAction(action, value) {
@@ -35,49 +51,69 @@ class Fighter {
         this.actions[action] = parseInt(this.actions[action]) - parseInt(value);
     }
 
-    // updateHealth(healthbar, value) {
-    //     healthbar.querySelector('playerHealthCurrent').style.width = `(${this.health} - ${value})%`
-    // }
+    updateHealth(healthbar, value, opponent) {
+        if (value <= 0) {
+            return;
+        } else {
+            let healthbarPercent = `${parseInt(opponent.hp)}%`;
+            console.log(healthbarPercent);
+            if (healthbar.id === "playerHealthCurrent") {
+                playerHealthbar.style.width = healthbarPercent;
+            } else if (healthbar.id === "bossHealthCurrent") {
+                bossHealthbar.style.width = healthbarPercent;
+            }
+        }
+    }
 
     defend() {
         const defendProb = probabilityCheck(50, 35, 47);
 
         switch (defendProb) {
-            case defendProb === 1:
-                this.actions.defense += (this.actions.defense * .5)
+            case 1:
+                return;
+            case 2:
+                let boostedDefense = this.actions.defense + 2;
+                gameLog.innerHTML += `<p id="boostedDefense">Defending boosted your defense +2</p>`
+                this.actions.defense = this.actions.defense + boostedDefense;
                 break;
-            case defendProb === 2:
-                this.actions.defense += (this.actions.defense * .75)
-                break;
-            case defendProb === 10:
-                this.actions.defense += this.actions.defense
+            case 10:                
+                let boostederDefense = this.actions.defense + 5
+                gameLog.innerHTML += `<p id="boostederDefense">Defending boosted your defense +5</p>`
+                this.actions.defense = this.actions.defense + boostederDefense;
                 break;
         }
     }
     
     evade() {
-        return probabilityCheck(40, this.evasion);
+        const evadeProb= probabilityCheck(40, this.actions.evasion);
+
+        switch (evadeProb) {
+            case 1:
+                this.actions.defense = this.actions.defense + 100;
+                break;
+            case 10:
+                return;
+        }
     }
 
-    bossTurn(boss, player) {
+    bossTurn(boss, player, healthbar) {
         if (boss.hp <= (boss.hp * .75)) {
             let probOfAttack = probabilityCheck(50, 38);
             if (probOfAttack === 1) {
-                boss.attack(player);
-
+                boss.attack(player, healthbar, boss);
             } else if (probOfAttack === 10) {
                 boss.defend();
             }
         } else if (boss.hp <= (boss.hp * .5)) {
             let probOfAttack = probabilityCheck(50, 20);
             if (probOfAttack === 1) {
-                boss.attack(player);
+                boss.attack(player, healthbar, boss);
 
             } else if (probOfAttack === 10) {
                 boss.defend();
             }
         } else {
-            boss.attack(player);
+            boss.attack(player, healthbar, boss);
         }
     }
 }
@@ -108,28 +144,6 @@ class Boss extends Fighter {
         super(name);
         this.hasProp = "BOSS"
     }
-
-    // bossTurn(player) {
-    //     if (this.hp <= (this.hp * .75)) {
-    //         let probOfAttack = probabilityCheck(50, 38);
-    //         if (probOfAttack === 1) {
-    //             this.attack(player);
-
-    //         } else if (probOfAttack === 10) {
-    //             this.defend();
-    //         }
-    //     } else if (this.hp <= (this.hp * .5)) {
-    //         let probOfAttack = probabilityCheck(50, 20);
-    //         if (probOfAttack === 1) {
-    //             this.attack(player);
-
-    //         } else if (probOfAttack === 10) {
-    //             this.defend();
-    //         }
-    //     } else {
-    //         this.attack(player);
-    //     }
-    // }
 }
 
 class Easy extends Boss {
@@ -138,6 +152,11 @@ class Easy extends Boss {
         this.hp = hp
         this.id = id
         this.actions = {
+            attack: attack,
+            defense: defense,
+            evasion: evasion
+        }
+        this.baseStats = {
             attack: attack,
             defense: defense,
             evasion: evasion
@@ -155,6 +174,11 @@ class Archer extends Range {
             defense: defense,
             evasion: evasion
         }
+        this.baseStats = {
+            attack: attack,
+            defense: defense,
+            evasion: evasion
+        }
     }
 }
 
@@ -164,6 +188,11 @@ class Gunslinger extends Range {
         this.hp = hp
         this.id = id
         this.actions = {
+            attack: attack,
+            defense: defense,
+            evasion: evasion
+        }
+        this.baseStats = {
             attack: attack,
             defense: defense,
             evasion: evasion
@@ -181,6 +210,11 @@ class Mage extends Magic {
             defense: defense,
             evasion: evasion
         }
+        this.baseStats = {
+            attack: attack,
+            defense: defense,
+            evasion: evasion
+        }
     }
 }
 class Reaper extends Magic {
@@ -189,6 +223,11 @@ class Reaper extends Magic {
         this.hp = hp
         this.id = id
         this.actions = {
+            attack: attack,
+            defense: defense,
+            evasion: evasion
+        }
+        this.baseStats = {
             attack: attack,
             defense: defense,
             evasion: evasion
@@ -206,6 +245,11 @@ class Rogue extends Might {
             defense: defense,
             evasion: evasion
         }
+        this.baseStats = {
+            attack: attack,
+            defense: defense,
+            evasion: evasion
+        }
     }
 }
 
@@ -215,6 +259,11 @@ class Paladin extends Might {
         this.hp = hp
         this.id = id
         this.actions = {
+            attack: attack,
+            defense: defense,
+            evasion: evasion
+        }
+        this.baseStats = {
             attack: attack,
             defense: defense,
             evasion: evasion

@@ -24,20 +24,19 @@ class Card {
         }
     };
 
+    // //get value of card
+    // getCardValue() {
+    //     return helper.probabilityCheck(100, 20, 38, 54, 68, 80, 90, 94, 97, 99);
+    // };
     //get value of card
     getCardValue() {
-        return helper.probabilityCheck(100, 20, 38, 54, 68, 80, 90, 94, 97, 99);
-            // 20% of 1 
-            // 18% of 2
-            // 16% of 3
-            // 14% of 4
-            // 12% of 5
-            // 10% of 6
-            // 4% of 7
-            // 3% of 8
-            // 2% of 9
-            // 1% of 10
-        // return helper.probabilityCheck(10, 1, 2, 3, 4, 5, 6, 7, 8, 9);
+        let value = probabilityCheck(100, 20, 38, 54, 68, 80, 90, 95, 98);
+        console.log(value)
+        if (value === 10) {
+            return 9;
+        } else {
+            return value;
+        }
     };
 }
 
