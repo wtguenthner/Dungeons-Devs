@@ -1,6 +1,7 @@
 const taylorAvi = document.getElementById("taylorAvi");
-const maceAvi = document.getElementById("maceoAvi");
 const sophiaAvi = document.getElementById("sophiaAvi");
+const joshuaAvi = document.getElementById("joshuaAvi");
+const maceAvi = document.getElementById("maceoAvi");
 const mainBtn = document.getElementById("mmBtn");
 const mainText = document.getElementById("mainMenu");
 
@@ -34,6 +35,16 @@ sophiaAvi.onmouseout = function (event) {
     sophiaAvi.src="./assets/img/sophia.jpeg"
 };
 
+joshuaAvi.onmouseover = function (event) {
+    event.preventDefault();
+    joshuaAvi.src="./assets/img/businessbaboon.jpg"
+};
+
+joshuaAvi.onmouseout = function (event) {
+    event.preventDefault();
+    joshuaAvi.src="./assets/img/josh.jpg"
+};
+
 mainBtn.onclick = function () {
     location.href = "menu.html"
 };
@@ -41,3 +52,5 @@ mainBtn.onclick = function () {
 mainText.onclick = function() {
     location.href = "menu.html"
 }
+
+
