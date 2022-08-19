@@ -39,7 +39,8 @@ const playerDeck = document.getElementById('playerDeck');
 const rematchBtn = document.getElementById('rematch');
 const playerMessage = document.getElementById('playerMessage-container');
 const bossMessage = document.getElementById('bossMessage-container');
-
+const ruleBtn = document.getElementById('ruleBtn');
+const ruleScroll = document.getElementById('howToPlay-container');
 
 
 let playedCard;
@@ -55,6 +56,13 @@ defendButton.addEventListener('click', () => defendTurn());
 rematchBtn.addEventListener('click', () => {
     window.location.reload();
 })
+ruleBtn.onclick = function() {
+    if (ruleScroll.style.visibility === "hidden") {
+        ruleScroll.style.visibility = "visible";
+    } else {
+        ruleScroll.style.visibility = "hidden";
+    }
+};
 
 const getUserData = async () => {
     return await fetch(`/api/users/${username}`, {

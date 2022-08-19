@@ -303,6 +303,50 @@ button {
   visibility: hidden;
 }
 
+#howToPlay-container {
+  position: absolute;
+  left: 100px;
+  bottom: 150px;
+  display: flex;
+  /* visibility: hidden; */
+  /* display: none;  */
+}
+
+#scrollHeader {
+  position: absolute;
+  left: 150px;
+  top: 60px;
+  color: rgb(48, 19, 4);
+  display: flex;
+  cursor: default;
+}
+
+#ruleMenu {
+  color: var(--clr-primary);
+  position: relative;
+  left: 200px;
+  top: 0px;
+  cursor: default;
+}
+
+#ruleBtn {
+  color: var(--clr-primary);
+}
+
+#ruleBtn:hover {
+  filter: brightness(120%);
+  cursor: default;
+}
+
+#scrollText {
+  position: absolute;
+  left: 95px;
+  top: 90px;
+  color: rgb(48, 19, 4);
+  display: flex;
+  cursor: default;
+}
+
 @media screen and (min-width: 450px) {
   #logo {
     width: 30rem;
