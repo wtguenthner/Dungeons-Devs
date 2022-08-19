@@ -60,6 +60,10 @@ h1 {
     }
 }
 
+#sevenDaysAvi {
+    display: none;
+}
+
 #deathknight {
     display: none;
 }
