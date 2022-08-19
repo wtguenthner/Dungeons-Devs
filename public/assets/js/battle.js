@@ -1,6 +1,10 @@
 import { default as probabilityCheck, getCardAction, getCardValue } from '../../utils/helpers.js';
 import { Mage, Archer, Gunslinger, Reaper, Rogue, Paladin, Easy } from './characterClasses.js';
 import Card from "./card.js";
+
+const music = document.getElementById("music");
+music.volume = .2;
+
 const card1 = document.getElementById('Card1');
 const card1Title = document.getElementById("card1Title");
 const card1Val = document.getElementById("card1Val");
@@ -222,25 +226,6 @@ const selectCard = async (e) => {
     renderStats();
     disableCard(selectedCard.id);
     scaleCard(selectedCard.id);
-    // if (cardAction === "attack") {
-    //     attack.innerText = (player1.actions.attack + parseInt(cardValue));
-    //     player1.updateAction(cardAction, cardValue)
-    //     disableCard(selectedCard.id);
-    //     scaleCard(selectedCard.id);
-    // } else if (cardAction === "defense") {
-    //     defense.innerText = (player1.actions.defense + parseInt(cardValue));
-    //     evasion.innerText = player1.actions.evasion;
-    //     attack.innerText = player1.actions.attack;
-    //     disableCard(selectedCard.id);
-    //     scaleCard(selectedCard.id);
-    // } else {
-    //     evasion.innerText = (player1.actions.evasion + parseInt(cardValue));
-    //     defense.innerText = player1.actions.defense;
-    //     attack.innerText = player1.actions.attack;
-    //     disableCard(selectedCard.id);
-    //     scaleCard(selectedCard.id);
-    // }
-
     turnOptions.classList.remove('hide');
     console.log(player1);
     return playedCard = { action: cardAction, value: cardValue, card_id: selectedCard.id };
@@ -287,6 +272,7 @@ const renderStats = async () => {
 //         return bossDefenseBoost = 5;
 //     }
 // }
+
 const checkHealth = async () => {
     if (player1.hp <= 0) {
         PlayerEndGame(player1);
@@ -309,6 +295,8 @@ const PlayerEndGame = async (fighter) => {
 }
 
 const attackTurn = async () => {
+    const attackAudio = new Audio("./assets/audio/attack.mp3");
+    attackAudio.play();
     boss.evade();
     player1.attack(boss, bossHealthbar, player1);
     checkHealth();
@@ -323,6 +311,8 @@ const attackTurn = async () => {
 }
 
 const defendTurn = async () => {
+    const defendAudio = new Audio("./assets/audio/defense.mp3");
+    defendAudio.play();
     player1.defend();
     boss.resetStats();
     player1.evade();
@@ -334,66 +324,11 @@ const defendTurn = async () => {
     redraw();
 }
 
-// const bossTurn = async (opponent, player) =>  {
-//     if (opponent.hp <= (opponent.hp * .75)) {
-//         let probOfAttack = probabilityCheck(50, 38);
-//         if (probOfAttack === 1) {
-//             opponent.attack(player);
-
-//         } else if (probOfAttack === 10) {
-//             opponent.defend();
-//         }
-//     } else if (opponent.hp <= (opponent.hp * .5)) {
-//         let probOfAttack = probabilityCheck(50, 20);
-//         if (probOfAttack === 1) {
-//             opponent.attack(player);
-
-//         } else if (probOfAttack === 10) {
-//             opponent.defend();
-//         }
-//     } else {
-//         opponent.attack(player);
-//     }
-// }
-
-const battle = async (player, opponent) => {
-    //select card to play
-    //on event "click" emphasis goes to selected card (maybe by enlarging it), and play buttons(attack, defend) become visible.
-    //on different card "click" emphasis changes to newly selected card
-    //click play button
-    // switch (cardAction) {
-    //     case "attack":
-    //         player.attack += cardValue;
-    //         //print changed value to player card on DOM
-    //         break;
-    //     case "defense":
-    //         player.defense += cardValue;
-    //         //print changed value to player card on DOM
-    //         break;
-    //     case "evasion":
-    //         player.evasion += cardValue;
-    //         //print changed value to player card on DOM
-    //         break;
-    // }
-    // if (e.attack === "attack") {
-    //     player.attack(opponent);
-    //     opponent.bossTurn(opponent, player);
-    // } else if (e.defend === "defend") {
-    //     player.defend();
-    //     opponent.bossTurn(opponent, player);
-    // }
-};
-
 const init = async () => {
     setCharacterInfo();
     setBossInfo(boss);
     dealLeftCard();
     dealMiddleCard();
     dealRightCard();
-    battle(player1, boss);
 };
 init();
-
-// let Kevin = new Paladin("Kevin", 8, 7, 5, 100);
-// let boss = new Easy("Mob Assassin", 7, 6, 7, 100);
-// battle(Kevin, boss)

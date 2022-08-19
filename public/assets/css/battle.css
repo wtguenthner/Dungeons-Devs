@@ -57,10 +57,9 @@ main {
 .characterCard {
   width: 80px;
   height: 130px;
-  background-image: url(../img/cardFrame.jpg);
+  background-image: url(../img/cardBackground.png);
   background-position: center;
   background-size: cover;
-  border-radius: 4px;
   color: var(--clr-primary);
   text-align: center;
 }
@@ -87,7 +86,7 @@ main {
 #bossAttackVal, #bossDefenseVal, #bossEvasionVal, #playerAttackVal, #playerDefenseVal, #playerEvasionVal {
   text-align: center;
   position: absolute;
-  bottom: .24rem;
+  bottom: 6px;
   color: rgb(237, 57, 17);
   text-shadow:
     0.07em 0 rgb(46, 7, 7),
@@ -96,36 +95,36 @@ main {
     0 -0.07em rgb(46, 7, 7);
 }
 #bossAttackVal, #playerAttackVal {
-  left: .4rem;
+  left: 9px;
 }
 #bossDefenseVal, #playerDefenseVal {
   left: 36px;
 }
 #bossEvasionVal, #playerEvasionVal {
-  right: .4rem;
+  right: 8px;
 }
 #bossAttackIcon, #bossDefenseIcon, #bossEvasionIcon, #playerAttackIcon, #playerDefenseIcon, #playerEvasionIcon  {
   position: absolute;
-  bottom: -2px;
+  bottom: 0px;
 }
 #bossAttackIcon, #playerAttackIcon  {
-  left: -4px;
+  left: -2px;
 }
 #bossDefenseIcon, #playerDefenseIcon  {
   left: 25px;
 }
 #bossEvasionIcon, #playerEvasionIcon  {
-  right: 0px;
+  right: -4px;
 }
 
 .cardTitle-container {
   font-size: 0.75rem;
-  color: rgb(29, 3, 3);
+  color: rgb(208, 166, 166);
   text-shadow:
-  0.03em 0 rgb(235, 195, 195),
-  0 0.03em rgb(235, 195, 195),
-  -0.03em 0 rgb(235, 195, 195),
-  0 -0.03em rgb(235, 195, 195);
+  0.03em 0 rgb(29, 3, 3),
+  0 0.03em rgb(29, 3, 3),
+  -0.03em 0 rgb(29, 3, 3),
+  0 -0.03em rgb(29, 3, 3);
 }
 
 .cardPortrait {
@@ -147,12 +146,18 @@ h4 {
   text-align: center;
   margin: auto auto 2.5rem;
   z-index: 4;
+  color: rgb(171, 156, 133);
+  text-shadow:
+  0.03em 0 rgb(29, 3, 3),
+  0 0.03em rgb(29, 3, 3),
+  -0.03em 0 rgb(29, 3, 3),
+  0 -0.03em rgb(29, 3, 3);
 }
 
 h5 {
   position: absolute;
   font-size: 1.75rem;
-  bottom: .6rem;
+  bottom: 12px;
   z-index: 5;
 }
 
@@ -170,7 +175,7 @@ h5 {
   bottom: 3.45rem;
 }
 #card1Val, #card2Val, #card3Val {
-  left: .4rem;
+  left: 7px;
   color: rgb(29, 3, 3);
   text-shadow:
   0.03em 0 rgb(235, 195, 195),
@@ -282,9 +287,10 @@ button {
 .deckCard {
   width: 50px;
   height: 82px;
-  background-image: url(../img/cardFrame.jpg);
-  background-size: cover;
+  background-image: url(../img/cardBackground.png);
+  background-size: contain;
   background-position: center;
+  background-repeat: no-repeat;
   border: solid 1px rgb(48, 19, 4);
   color: rgb(48, 19, 4);
 }
@@ -295,4 +301,138 @@ button {
 
 .hide {
   visibility: hidden;
+}
+
+@media screen and (min-width: 450px) {
+  #logo {
+    width: 30rem;
+  }
+  #playerUsername {
+    font-size: 2.5rem;
+    margin-top: -3.5rem;
+    margin-bottom: 1rem;
+  }
+  main {
+    width: 640px;
+    height: 560px;
+  }
+
+  .characterCard {
+    width: 160px;
+    height: 260px;
+  }
+  #playerCard-container {
+    margin: -30px auto auto 24px;
+  }
+  #bossCard-container {
+    margin: 20px 24px auto auto;
+  }
+  #bossAttackVal, #bossDefenseVal, #bossEvasionVal, #playerAttackVal, #playerDefenseVal, #playerEvasionVal {
+    bottom: 16px;
+    font-size: 1.5rem;
+  }
+  #bossAttackVal, #playerAttackVal {
+    left: 22px;
+  }
+  #bossDefenseVal, #playerDefenseVal {
+    left: 68px;
+  }
+  #bossEvasionVal, #playerEvasionVal {
+    right: 22px;
+  }
+  #bossAttackIcon, #bossDefenseIcon, #bossEvasionIcon, #playerAttackIcon, #playerDefenseIcon, #playerEvasionIcon  {
+    bottom: 6px;
+  }
+  #bossAttackIcon, #playerAttackIcon  {
+    left: 4px;
+  }
+  #bossDefenseIcon, #playerDefenseIcon  {
+    left: 50px;
+  }
+  #bossEvasionIcon, #playerEvasionIcon  {
+    right: 6px;
+  }
+  .icon {
+    width: 3.25rem;
+  }
+  .cardTitle-container {
+    font-size: 1.25rem;
+    padding-top: .25rem;
+  }
+  .cardPortrait {
+      height: 164px;
+      width: 120px;
+  }
+  #playerPortait {
+    margin: -30px auto auto 24px;
+  }
+
+  #playerDeck {
+    width: 320px;
+    height: 160px;
+    right: 100px;
+    bottom: 40px;
+  }
+  .deckCard {
+    width: 100px;
+    height: 164px;
+  }
+  h4 {
+    font-size: 1.25rem;
+    margin: auto auto 5rem;
+  }
+  h5 {
+    font-size: 3rem;
+    bottom: 24px;
+  }
+  .cardIcon {
+    width: 6.25rem;
+  }
+  #card1Icon, #card2Icon, #card3Icon {
+    left: .05rem;
+    bottom: 6.5rem;
+  }
+  #card1Val, #card2Val, #card3Val {
+    left: 19px;
+  }
+
+  #playerHealthbar-container {
+    width: 160px;
+    height: 24px;
+    bottom: 310px;
+    left: 24px;
+  }
+  #playerHealthbar {
+      width: 155px;
+      height: 18px;
+  }
+  
+  #bossHealthbar-container {
+    width: 400px;
+    height: 40px;
+    top: 30px;
+    left: 24px;
+  }
+  #bossHealthbar {
+    width: 392px;
+    height: 32px;
+  }
+  
+  #turnOptions-container {
+    width: 120px;
+    height: 120px;
+    left: 260px;
+    bottom: 220px;
+  }
+  button {
+    border-radius: 4px;
+    padding: .5rem;
+    font-size: larger;
+  }
+  #rematch {
+    bottom: 80px;
+    right: 140px;
+    padding: 1.5rem;
+    border-radius: 8px;
+  }
 }
