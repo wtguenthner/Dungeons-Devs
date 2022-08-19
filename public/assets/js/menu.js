@@ -1,3 +1,5 @@
+
+
 const profile = document.querySelector("#profile");
 const startFight = document.querySelector("#startmatch");
 const devs = document.querySelector("#devs");

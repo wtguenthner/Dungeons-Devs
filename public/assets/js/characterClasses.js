@@ -2,37 +2,56 @@ import { default as probabilityCheck, getCardAction, getCardValue } from '../../
 import Card from './card.js';
 const playerHealthbar = document.getElementById('playerHealthCurrent');
 const bossHealthbar = document.getElementById('bossHealthCurrent');
-
+const gameLog = document.getElementById('gameLog');
+let turn = 1;
 class Fighter {
     constructor(name) {
         this.name = name;
         this.hasProp = false;
     }
 
-    attack(opponent, healthbar) {
+    attack(opponent, healthbar, attacker) {
         const attackProb = probabilityCheck(50, 47);
 
         switch (attackProb) {
             case 1:
                 let damage = this.actions.attack - opponent.actions.defense;
-                opponent.takeDamage(damage);
+                opponent.takeDamage(opponent.name, damage, attacker.name);
                 this.updateHealth(healthbar, damage, opponent);
+                if(damage >0){
+                gameLog.innerHTML += `<p>Turn: ${turn}- ${attacker.name} hit ${opponent.name} for ${damage} damage</p>`
+                
+                }else{
+                    gameLog.innerHTML += `<p>Turn: ${turn}- ${attacker.name} hit ${opponent.name} for 0 damage</p>`}
+                    
                 break;
             case 10:
                 let critDamage = (this.actions.attack * 1.8) - opponent.actions.defense;
-                opponent.takeDamage(critDamage);
-                attackProb.message === 'Critical Hit!'
+                opponent.takeDamage(opponent.name, critDamage, attacker.name);
                 this.updateHealth(healthbar, critDamage, opponent);
+                if(critDamage >0){
+                    gameLog.innerHTML += `<p>Turn: ${turn}- ${attacker.name} hit ${opponent.name} for ${critDamage} damage</p>`
+                    
+                }else{
+                        gameLog.innerHTML += `<p>Turn: ${turn}- ${attacker.name} hit ${opponent.name} for 0 damage</p>`}
+                        
+                    break;
                 break;
         }
+       
         return attackProb
     }
 
-    takeDamage(input) {
-        if(parseInt(input) < 0) {
+    resetStats() {
+        this.actions = {...this.baseStats};
+    }
+
+    takeDamage(opponentName, input, attackerName) {
+        if(parseInt(input) <= 0) {
             return;
         } else {
             let newHealth = parseInt(this.hp) - parseInt(input);
+            // messageContainer.innerHTML = `<p class="message">${attackerName} hit ${opponentName} for ${parseInt(input)}!</p>`;
             console.log(newHealth);
             this.hp = newHealth;
         }
@@ -65,15 +84,16 @@ class Fighter {
 
         switch (defendProb) {
             case 1:
-                let boostedDefense = this.actions.defense * .5
+                return;
+            case 2:
+                let boostedDefense = this.actions.defense + 2;
+                gameLog.innerHTML += `<p id="boostedDefense">Defending boosted your defense +2</p>`
                 this.actions.defense = this.actions.defense + boostedDefense;
                 break;
-            case 2:
-                let boostederDefense = this.actions.defense * .75
+            case 10:                
+                let boostederDefense = this.actions.defense + 5
+                gameLog.innerHTML += `<p id="boostederDefense">Defending boosted your defense +5</p>`
                 this.actions.defense = this.actions.defense + boostederDefense;
-                break;
-            case 10:
-                return;
                 break;
         }
     }
@@ -94,23 +114,24 @@ class Fighter {
         if (boss.hp <= (boss.hp * .75)) {
             let probOfAttack = probabilityCheck(50, 38);
             if (probOfAttack === 1) {
-                boss.attack(player, healthbar);
-
+                boss.attack(player, healthbar, boss);
             } else if (probOfAttack === 10) {
                 boss.defend();
             }
         } else if (boss.hp <= (boss.hp * .5)) {
             let probOfAttack = probabilityCheck(50, 20);
             if (probOfAttack === 1) {
-                boss.attack(player, healthbar);
+                boss.attack(player, healthbar, boss);
 
             } else if (probOfAttack === 10) {
                 boss.defend();
             }
         } else {
-            boss.attack(player, healthbar);
+            boss.attack(player, healthbar, boss);
         }
+        turn++;
     }
+    
 }
 
 class Might extends Fighter {
@@ -139,28 +160,6 @@ class Boss extends Fighter {
         super(name);
         this.hasProp = "BOSS"
     }
-
-    // bossTurn(player) {
-    //     if (this.hp <= (this.hp * .75)) {
-    //         let probOfAttack = probabilityCheck(50, 38);
-    //         if (probOfAttack === 1) {
-    //             this.attack(player);
-
-    //         } else if (probOfAttack === 10) {
-    //             this.defend();
-    //         }
-    //     } else if (this.hp <= (this.hp * .5)) {
-    //         let probOfAttack = probabilityCheck(50, 20);
-    //         if (probOfAttack === 1) {
-    //             this.attack(player);
-
-    //         } else if (probOfAttack === 10) {
-    //             this.defend();
-    //         }
-    //     } else {
-    //         this.attack(player);
-    //     }
-    // }
 }
 
 class Easy extends Boss {
@@ -169,6 +168,11 @@ class Easy extends Boss {
         this.hp = hp
         this.id = id
         this.actions = {
+            attack: attack,
+            defense: defense,
+            evasion: evasion
+        }
+        this.baseStats = {
             attack: attack,
             defense: defense,
             evasion: evasion
@@ -186,6 +190,11 @@ class Archer extends Range {
             defense: defense,
             evasion: evasion
         }
+        this.baseStats = {
+            attack: attack,
+            defense: defense,
+            evasion: evasion
+        }
     }
 }
 
@@ -195,6 +204,11 @@ class Gunslinger extends Range {
         this.hp = hp
         this.id = id
         this.actions = {
+            attack: attack,
+            defense: defense,
+            evasion: evasion
+        }
+        this.baseStats = {
             attack: attack,
             defense: defense,
             evasion: evasion
@@ -212,6 +226,11 @@ class Mage extends Magic {
             defense: defense,
             evasion: evasion
         }
+        this.baseStats = {
+            attack: attack,
+            defense: defense,
+            evasion: evasion
+        }
     }
 }
 class Reaper extends Magic {
@@ -220,6 +239,11 @@ class Reaper extends Magic {
         this.hp = hp
         this.id = id
         this.actions = {
+            attack: attack,
+            defense: defense,
+            evasion: evasion
+        }
+        this.baseStats = {
             attack: attack,
             defense: defense,
             evasion: evasion
@@ -237,6 +261,11 @@ class Rogue extends Might {
             defense: defense,
             evasion: evasion
         }
+        this.baseStats = {
+            attack: attack,
+            defense: defense,
+            evasion: evasion
+        }
     }
 }
 
@@ -246,6 +275,11 @@ class Paladin extends Might {
         this.hp = hp
         this.id = id
         this.actions = {
+            attack: attack,
+            defense: defense,
+            evasion: evasion
+        }
+        this.baseStats = {
             attack: attack,
             defense: defense,
             evasion: evasion

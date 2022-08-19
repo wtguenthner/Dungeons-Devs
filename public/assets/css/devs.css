@@ -79,4 +79,8 @@ h1 {
 #mainMenu {
     position: relative;
     bottom: 34px;
-  }
+}
+
+#mmBtn:hover {
+    filter: brightness(120%);
+}

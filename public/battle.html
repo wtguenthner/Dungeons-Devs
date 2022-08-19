@@ -4,32 +4,64 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.typekit.net/pxq3nwt.css">
     <link rel="stylesheet" href="./assets/css/battle.css">
     
     <title>Dungeons & Devs</title>
 </head>
 <body>
     <header id="title-container">
+        <div id="ruleBtn">
+            <h2>?</h2>
+        </div>
         <div id="logo-container">
             <img id="logo" src="./assets/img/DungeonsNDevs.png" alt="Dungeons and Devs logo">
         </div>
         <h2 id="playerUsername">?</h2>
     </header>
-
+    <section id="howToPlay-container">
+        <img id="ruleScroll" src="./assets/img/scroll.png" width="400">
+            <div id="scrollHeader">
+                <h2>How To Play</h2>
+            </div>
+            <div id="scrollText">
+                <p><br>
+                    Player will begin with the first turn <br>
+                    against the boss. <br><br>
+                    Player must choose from 1 of the 3 <br>
+                    stat cards before deciding whether <br>
+                    to attack or defend. <br><br>
+                    Each card will boost the requisite <br>
+                    stat by the requisite amount for <br>
+                    ONE turn. <br><br>
+                    The difference between your attack <br>
+                    stat and the boss's defense stat will <br>
+                    be dealt to the boss's HP. <br><br>
+                    After your turn, the boss will either <br>
+                    attack you or defend against you.<br><br>
+                    <strong>Can you defeat the Stanman!?</strong>
+                    </p>
+            </div>
+    </section>
     <main id="gameboard-container">
         <section id="bossCard-container" class="characterCard">
             <div class="cardTitle-container" id="bossName-container">
                 <h3 id="bossName">Stanman</h3>
             </div>
-            <img id="bossPortrait" class="cardPortrait" src="./assets/img/Stanmanga79.png">
+            <div id="bossPortrait-container">
+
+            </div>
             <div id="bossStat-container">
-                <div id="attack-container">
+                <div id="bossAttack-container">
+                    <img id="bossAttackIcon" class="icon" src="./assets/img/AttackIcon.png">
                     <p id="bossAttackVal">8</p>
                 </div>
-                <div id="defense-container">
+                <div id="bossDefense-container">
+                    <img id="bossDefenseIcon" class="icon" src="./assets/img/DefenseIcon.png">
                     <p id="bossDefenseVal">6</p>
                 </div>
-                <div id="evasion-container">
+                <div id="bossEvasion-container">
+                    <img id="bossEvasionIcon" class="icon" src="./assets/img/EvasionIcon.png">
                     <p id="bossEvasionVal">6</p>
                 </div>
             </div>
@@ -51,13 +83,16 @@
                 
             </div>
             <div id="playerStat-container">
-                <div id="attack-container">
+                <div id="PlayerAttack-container">
+                    <img id="playerAttackIcon" class="icon" src="./assets/img/AttackIcon.png">
                     <p id="playerAttackVal">7</p>
                 </div>
-                <div id="defense-container">
+                <div id="PlayerDefense-container">
+                    <img id="playerDefenseIcon" class="icon" src="./assets/img/DefenseIcon.png">
                     <p id="playerDefenseVal">6</p>
                 </div>
-                <div id="evasion-container">
+                <div id="PlayerEvasion-container">
+                    <img id="playerEvasionIcon" class="icon" src="./assets/img/EvasionIcon.png">
                     <p id="playerEvasionVal">7</p>
                 </div>
             </div>
@@ -75,33 +110,36 @@
                 <div id="card1Title-container">
                     <h4 id="card1Title">Attack</h4>
                 </div>
-                <div id="card1Icon">
 
-                </div>
                 <div id="card1Val-container">
                     <h5 id="card1Val">+5</h5>
+                </div>
+                <div id="card1Icon">
+                    <img class="cardIcon" src="./assets/img/DefenseIcon.png">
                 </div>
             </button>
             <button class="deckCard" id="Card2">
                 <div id="card2Title-container">
                     <h4 id="card2Title">Evasion</h4>
                 </div>
-                <div id="card2Icon">
 
-                </div>
                 <div id="card2Val-container">
-                    <h5 id="card2Val">+2</h5>
+                    <h5 id="card2Val" style="z-index: 5;">+2</h5>
+                </div>
+                <div id="card2Icon" style="z-index: 1;">
+                    <img class="cardIcon" src="./assets/img/AttackIcon.png">
                 </div>
             </button>
             <button class="deckCard" id="Card3">
                 <div id="card3Title-container">
                     <h4 id="card3Title">Defense</h4>
                 </div>
-                <div id="card3Icon">
 
-                </div>
                 <div id="card3Val-container">
                     <h5 id="card3Val">+3</h5>
+                </div>
+                <div id="card3Icon">
+                    <img class="cardIcon" src="./assets/img/EvasionIcon.png">
                 </div>
             </button>
         </section>
@@ -111,8 +149,15 @@
             <p>or</p>
             <button id="defendOption">Defend</button>
         </div>
+
+        <div id="playerMessage-container"></div>
+        <div id="bossMessage-container"></div>
+
+        <button id="rematch" class="hide">Rematch!</button>
+
+        <section id="gameLog"> </section>
     </main>
-   
+    
     <script type="module" src="./assets/js/characterClasses.js"></script>
     <script type="module" src="./assets/js/battle.js"></script>
 </body>

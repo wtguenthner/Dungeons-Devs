@@ -42,6 +42,8 @@ if(username, password){
   headers: { "Content-Type": "application/json" },
 });
 }
+
+
 sessionStorage.setItem("username", `${username}`)
 const userID =  await getUserData();
 createCharacterAPI(class_id,character_name,userID);
