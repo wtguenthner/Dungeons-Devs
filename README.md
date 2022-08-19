@@ -48,11 +48,11 @@ This app utilizes MIT License. For further information, please consult https://o
 ## Have questions or want to contribute?
 
 Visit our github profiles:
-[Alexander Hacker](https://github.com/hackpres)
-[Joshua Moran](https://github.com/joshmoran501)
-[Maceo Maddox](https://github.com/MaceoMaddox)
-[Sophia De La Rosa](https://github.com/sophiadelarosa)
-[Taylor Guenthner](https://github.com/wtguenthner)
+[Alexander Hacker](https://github.com/hackpres)  
+[Joshua Moran](https://github.com/joshmoran501)  
+[Maceo Maddox](https://github.com/MaceoMaddox)  
+[Sophia De La Rosa](https://github.com/sophiadelarosa)  
+[Taylor Guenthner](https://github.com/wtguenthner)  
 
 OR
 
