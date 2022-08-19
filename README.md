@@ -21,7 +21,7 @@ In the future, we would like to add the more features such as:
 - [Usage](#usage)
 - [Rules](#rules)
 - [License](#license)
-- [Questions and Contributing](#have-questions-or-want-to-contribute?)
+- [Questions and Contributing](#have-questions-or-want-to-contribute)
 
 ## Installation:
 
