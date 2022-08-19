@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.typekit.net/pxq3nwt.css">
     <link rel="stylesheet" href="./assets/css/battle.css">
-    
+
     <title>Dungeons & Devs</title>
 </head>
+
 <body>
     <header id="title-container">
         <div id="ruleBtn">
@@ -21,27 +23,27 @@
     </header>
     <section id="howToPlay-container">
         <img id="ruleScroll" src="./assets/img/scroll.png" width="400">
-            <div id="scrollHeader">
-                <h2>How To Play</h2>
-            </div>
-            <div id="scrollText">
-                <p><br>
-                    Player will begin with the first turn <br>
-                    against the boss. <br><br>
-                    Player must choose from 1 of the 3 <br>
-                    stat cards before deciding whether <br>
-                    to attack or defend. <br><br>
-                    Each card will boost the requisite <br>
-                    stat by the requisite amount for <br>
-                    ONE turn. <br><br>
-                    The difference between your attack <br>
-                    stat and the boss's defense stat will <br>
-                    be dealt to the boss's HP. <br><br>
-                    After your turn, the boss will either <br>
-                    attack you or defend against you.<br><br>
-                    <strong>Can you defeat the Stanman!?</strong>
-                    </p>
-            </div>
+        <div id="scrollHeader">
+            <h2>How To Play</h2>
+        </div>
+        <div id="scrollText">
+            <p><br>
+                Player will begin with the first turn <br>
+                against the boss. <br><br>
+                Player must choose from 1 of the 3 <br>
+                stat cards before deciding whether <br>
+                to attack or defend. <br><br>
+                Each card will boost the requisite <br>
+                stat by the requisite amount for <br>
+                ONE turn. <br><br>
+                The difference between your attack <br>
+                stat and the boss's defense stat will <br>
+                be dealt to the boss's HP. <br><br>
+                After your turn, the boss will either <br>
+                attack you or defend against you.<br><br>
+                <strong>Can you defeat the Stanman!?</strong>
+            </p>
+        </div>
     </section>
     <main id="gameboard-container">
         <section id="bossCard-container" class="characterCard">
@@ -80,7 +82,7 @@
                 <h3 id="playerName">PlayerName</h3>
             </div>
             <div id="playerPortrait-container">
-                
+
             </div>
             <div id="playerStat-container">
                 <div id="PlayerAttack-container">
@@ -159,14 +161,14 @@
 
         </section>
     </main>
-   
+
     <script type="module" src="./assets/js/characterClasses.js"></script>
     <script type="module" src="./assets/js/battle.js"></script>
 </body>
 
 
 <audio id="music" loop autoplay src="./assets/audio/alexander-nakarada-medieval-loop-one.mp3">
-        
+
 </audio>
 
 </html>

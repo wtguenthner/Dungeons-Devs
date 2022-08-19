@@ -1,16 +1,26 @@
 const profile = document.querySelector("#profile");
 const startFight = document.querySelector("#startmatch");
 const devs = document.querySelector("#devs");
-// const logout = document.getElementById('logout');
+const logout = document.getElementById('logout');
 
 //user profile button document.location.replace("/profile.html");
 profile.addEventListener("submit", () =>
   document.location.replace("/profile.html")
 );
 
-//logout button
-//document.location.replace('/');
-// logout.addEventListener('submit', async() => await fetch("/api/users/logout"));
+// logout button
+// 
+logout.addEventListener('submit', async () => {
+  const response = await fetch("/api/users/logout", {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+  });
+  if (response.ok) {
+    document.location.replace('/');
+  } else {
+    alert('Failed to log out.');
+  }
+});
 
 //MTDs button document.location.replace('/meetthedevs.html');
 devs.addEventListener("submit", () =>

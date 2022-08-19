@@ -3,8 +3,9 @@ const router = express.Router();
 import Characters from "../../models/characters.js";
 import Classes from "../../models/classes.js";
 import User from "../../models/User.js";
+import withAuth from '../../public/utils/auth.js';
 
-router.get("/:id", async (req, res) => {
+router.get("/:id", withAuth, async (req, res) => {
   try {
     await Characters.findOne({where: {user_id: req.params.id}})
     .then((data) => res.json(data))
@@ -14,7 +15,7 @@ router.get("/:id", async (req, res) => {
   }
 })
 
-router.post("/:id", async (req, res) => {
+router.post("/:id", withAuth, async (req, res) => {
   try {
     await Classes.findByPk(req.params.id)
 
