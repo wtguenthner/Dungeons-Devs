@@ -1,6 +1,10 @@
 import { default as probabilityCheck, getCardAction, getCardValue } from '../../utils/helpers.js';
 import { Mage, Archer, Gunslinger, Reaper, Rogue, Paladin, Easy } from './characterClasses.js';
 import Card from "./card.js";
+
+const music = document.getElementById("music");
+music.volume = .2;
+
 const card1 = document.getElementById('Card1');
 const card1Title = document.getElementById("card1Title");
 const card1Val = document.getElementById("card1Val");
@@ -309,6 +313,8 @@ const PlayerEndGame = async (fighter) => {
 }
 
 const attackTurn = async () => {
+    const attackAudio = new Audio("./assets/audio/attack.mp3");
+    attackAudio.play();
     boss.evade();
     player1.attack(boss, bossHealthbar, player1);
     checkHealth();
@@ -323,6 +329,8 @@ const attackTurn = async () => {
 }
 
 const defendTurn = async () => {
+    const defendAudio = new Audio("./assets/audio/defense.mp3");
+    defendAudio.play();
     player1.defend();
     boss.resetStats();
     player1.evade();
@@ -383,6 +391,9 @@ const battle = async (player, opponent) => {
     //     opponent.bossTurn(opponent, player);
     // }
 };
+
+
+
 
 const init = async () => {
     setCharacterInfo();
