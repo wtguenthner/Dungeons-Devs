@@ -4,7 +4,7 @@ import Card from "./card.js";
 
 const music = document.getElementById("music");
 music.volume = .2;
-
+const gameLog = document.getElementById('gameLog');
 const card1 = document.getElementById('Card1');
 const card1Title = document.getElementById("card1Title");
 const card1Val = document.getElementById("card1Val");

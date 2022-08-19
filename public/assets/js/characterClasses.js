@@ -20,10 +20,10 @@ class Fighter {
                 this.updateHealth(healthbar, damage, opponent);
                 if(damage >0){
                 gameLog.innerHTML += `<p>Turn: ${turn}- ${attacker.name} hit ${opponent.name} for ${damage} damage</p>`
-                
+                gameLog.scrollTop = gameLog.scrollHeight;
                 }else{
                     gameLog.innerHTML += `<p>Turn: ${turn}- ${attacker.name} hit ${opponent.name} for 0 damage</p>`}
-                    
+                    gameLog.scrollTop = gameLog.scrollHeight;
                 break;
             case 10:
                 let critDamage = (this.actions.attack * 1.8) - opponent.actions.defense;
@@ -31,10 +31,10 @@ class Fighter {
                 this.updateHealth(healthbar, critDamage, opponent);
                 if(critDamage >0){
                     gameLog.innerHTML += `<p>Turn: ${turn}- ${attacker.name} hit ${opponent.name} for ${critDamage} damage</p>`
-                    
+                    gameLog.scrollTop = gameLog.scrollHeight;
                 }else{
                         gameLog.innerHTML += `<p>Turn: ${turn}- ${attacker.name} hit ${opponent.name} for 0 damage</p>`}
-                        
+                        gameLog.scrollTop = gameLog.scrollHeight;
                     break;
                 break;
         }
