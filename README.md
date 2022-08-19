@@ -56,4 +56,4 @@ Visit our github profiles:
 
 OR
 
-Visit the [meet the devs page](https://dungeons-devs.herokuapp.com/meetdevs.html) for our contact info!
+Visit [meet the devs](https://dungeons-devs.herokuapp.com/meetdevs.html) for our contact info!
