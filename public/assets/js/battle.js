@@ -52,6 +52,9 @@ card2.addEventListener('click', (e) => selectCard(e));
 card3.addEventListener('click', (e) => selectCard(e));
 attackButton.addEventListener('click', () => attackTurn());
 defendButton.addEventListener('click', () => defendTurn());
+rematchBtn.addEventListener('click', () => {
+    window.location.reload();
+})
 
 const getUserData = async () => {
     return await fetch(`/api/users/${username}`, {
@@ -283,12 +286,12 @@ const checkHealth = async () => {
     }
 }
 
-const BossEndGame = async (fighter) => {
+const BossEndGame = async () => {
     bossPortrait.innerHTML = `<img id="bossPortrait" class="cardPortrait" src="./assets/img/DnDevSkull.png" alt="boss death portrait"></img>`;
     playerDeck.classList.add('hide');
     rematchBtn.classList.remove('hide');
 }
-const PlayerEndGame = async (fighter) => {
+const PlayerEndGame = async () => {
     portrait.innerHTML = `<img id="playerPortrait" class="cardPortrait" src="./assets/img/DnDevSkull.png" alt="player death portrait">`;
     playerDeck.classList.add('hide');
     rematchBtn.classList.remove('hide');
