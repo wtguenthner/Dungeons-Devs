@@ -1,3 +1,4 @@
+import { urlencoded } from "express";
 
 const username = document.querySelector("#username-signup").value.trim();
 const password = document.querySelector("#password-signup").value.trim();
@@ -62,4 +63,26 @@ document
   .querySelector(".character-form")
   .addEventListener("submit", createCharacter);
 
+
+const changeClassImg = () =>{
+
+  let img = document.getElementById("class-choice").value;
+  const classImages = document.getElementById("classImages")
+  if(img = 1){
+    classImages.style.backgroundImage = `url(../img/archer1.png)`
+  }else if(img=2){
+    classImages.style.backgroundImage = url('../img/gunsligner.png');
+  }else if(img=3){
+    classImages.style.backgroundImage = `url(../img/mage1.png)`
+  }else if(img=4){
+    classImages.style.backgroundImage = `url(../img/paladin1.png)`
+  }else if(img=5){
+    classImages.style.backgroundImage = `url(../img/reaper1.png)`
+  }else if(img=6){
+    classImages.style.backgroundImage = `url(../img/rogue1.png)`
+  }
+  
+  
+
+}
 

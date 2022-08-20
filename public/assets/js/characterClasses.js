@@ -19,10 +19,10 @@ class Fighter {
                 opponent.takeDamage(opponent.name, damage, attacker.name);
                 this.updateHealth(healthbar, damage, opponent);
                 if(damage >0){
-                gameLog.innerHTML += `<p>Turn: ${turn}- ${attacker.name} hit ${opponent.name} for ${damage} damage</p>`
+                gameLog.innerHTML += `<p>Turn: ${turn} - ${attacker.name} hit ${opponent.name} for ${damage} damage</p>`
                 gameLog.scrollTop = gameLog.scrollHeight;
                 }else{
-                    gameLog.innerHTML += `<p>Turn: ${turn}- ${attacker.name} hit ${opponent.name} for 0 damage</p>`}
+                    gameLog.innerHTML += `<p>Turn: ${turn} - ${attacker.name} hit ${opponent.name} for 0 damage</p>`}
                     gameLog.scrollTop = gameLog.scrollHeight;
                 break;
             case 10:
@@ -30,13 +30,13 @@ class Fighter {
                 opponent.takeDamage(opponent.name, critDamage, attacker.name);
                 this.updateHealth(healthbar, critDamage, opponent);
                 if(critDamage >0){
-                    gameLog.innerHTML += `<p>Turn: ${turn}- ${attacker.name} hit ${opponent.name} for ${critDamage} damage</p>`
+                    gameLog.innerHTML += `<p>Turn: ${turn} - ${attacker.name} hit ${opponent.name} for ${critDamage} damage *CRIT*</p>`
                     gameLog.scrollTop = gameLog.scrollHeight;
                 }else{
-                        gameLog.innerHTML += `<p>Turn: ${turn}- ${attacker.name} hit ${opponent.name} for 0 damage</p>`}
+                        gameLog.innerHTML += `<p>Turn: ${turn} - ${attacker.name} hit ${opponent.name} for 0 damage</p>`}
                         gameLog.scrollTop = gameLog.scrollHeight;
                     break;
-                break;
+                
         }
        
         return attackProb
@@ -104,6 +104,7 @@ class Fighter {
         switch (evadeProb) {
             case 1:
                 this.actions.defense = this.actions.defense + 100;
+               gameLog.innerHTML+= `<p>Turn: ${turn} - Evade! </p>`;
                 break;
             case 10:
                 return;
