@@ -1,5 +1,5 @@
 const taylorAvi = document.getElementById("taylorAvi");
-const hackerAvi =document.getElementById("hackerAvi");
+const hackerAvi = document.getElementById("hackerAvi");
 const sophiaAvi = document.getElementById("sophiaAvi");
 const joshuaAvi = document.getElementById("joshuaAvi");
 const maceAvi = document.getElementById("maceoAvi");
@@ -7,61 +7,59 @@ const mainBtn = document.getElementById("mmBtn");
 const mainText = document.getElementById("mainMenu");
 
 taylorAvi.onmouseover = function (event) {
-    event.preventDefault();
-    taylorAvi.src="./assets/img/deathknight.png";
+  event.preventDefault();
+  taylorAvi.src = "./assets/img/deathknight.png";
 };
 
 taylorAvi.onmouseout = function (event) {
-    event.preventDefault();
-    taylorAvi.src="./assets/img/taylor.jpg";
+  event.preventDefault();
+  taylorAvi.src = "./assets/img/taylor.jpg";
 };
 
 hackerAvi.onmouseover = function (event) {
-    event.preventDefault();
-    hackerAvi.src="./assets/img/7dayshacker.png";
+  event.preventDefault();
+  hackerAvi.src = "./assets/img/7dayshacker.png";
 };
 
 hackerAvi.onmouseout = function (event) {
-    event.preventDefault();
-    hackerAvi.src="./assets/img/hackpres.png";
+  event.preventDefault();
+  hackerAvi.src = "./assets/img/hackpres.png";
 };
 
 maceAvi.onmouseover = function (event) {
-    event.preventDefault();
-    maceoAvi.src="./assets/img/shogo.jpg";
+  event.preventDefault();
+  maceoAvi.src = "./assets/img/shogo.jpg";
 };
 
 maceAvi.onmouseout = function (event) {
-    event.preventDefault();
-    maceoAvi.src="./assets/img/maceo.jpg";
+  event.preventDefault();
+  maceoAvi.src = "./assets/img/maceo.jpg";
 };
 
 sophiaAvi.onmouseover = function (event) {
-    event.preventDefault();
-    sophiaAvi.src="./assets/img/darkknight.png"
+  event.preventDefault();
+  sophiaAvi.src = "./assets/img/darkknight.png";
 };
 
 sophiaAvi.onmouseout = function (event) {
-    event.preventDefault();
-    sophiaAvi.src="./assets/img/sophia.jpeg"
+  event.preventDefault();
+  sophiaAvi.src = "./assets/img/sophia.jpeg";
 };
 
 joshuaAvi.onmouseover = function (event) {
-    event.preventDefault();
-    joshuaAvi.src="./assets/img/businessbaboon.jpg"
+  event.preventDefault();
+  joshuaAvi.src = "./assets/img/businessbaboon.jpg";
 };
 
 joshuaAvi.onmouseout = function (event) {
-    event.preventDefault();
-    joshuaAvi.src="./assets/img/josh.jpg"
+  event.preventDefault();
+  joshuaAvi.src = "./assets/img/josh.jpg";
 };
 
 mainBtn.onclick = function () {
-    location.href = "menu.html"
+  location.href = "menu.html";
 };
 
-mainText.onclick = function() {
-    location.href = "menu.html"
-}
-
-
+mainText.onclick = function () {
+  location.href = "menu.html";
+};

@@ -1,8 +1,7 @@
+import bcrypt from "bcrypt";
 
-import bcrypt from 'bcrypt'
-
-import sequelize from '../config/connection.js';
-import { Model, DataTypes} from 'sequelize';
+import sequelize from "../config/connection.js";
+import { Model, DataTypes } from "sequelize";
 
 class User extends Model {
   checkPassword(loginPw) {
@@ -13,7 +12,7 @@ class User extends Model {
 User.init(
   {
     user_id: {
-      type: DataTypes.UUID, 
+      type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       allowNull: false,
       primaryKey: true,
@@ -50,7 +49,7 @@ User.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'user',
+    modelName: "user",
   }
 );
 

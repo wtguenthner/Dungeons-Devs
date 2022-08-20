@@ -1,5 +1,5 @@
-import Sequelize from 'sequelize'
-import 'dotenv/config'
+import Sequelize from "sequelize";
+import "dotenv/config";
 
 let sequelize;
 
@@ -11,9 +11,8 @@ if (process.env.JAWSDB_URL) {
     process.env.DB_USER,
     process.env.DB_PASSWORD,
     {
-      host: 'localhost',
-      dialect: 'mysql',
-     
+      host: "localhost",
+      dialect: "mysql",
     }
   );
 }

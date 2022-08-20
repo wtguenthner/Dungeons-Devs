@@ -1,94 +1,91 @@
 :root {
-    color: tan;
-    font-family: Haettenschweiler;
-    text-align: center;
-    -webkit-text-stroke: 1.5px black;
-    display: flex;
-    justify-content: center;
-    cursor: default;
+  color: tan;
+  font-family: Haettenschweiler;
+  text-align: center;
+  -webkit-text-stroke: 1.5px black;
+  display: flex;
+  justify-content: center;
+  cursor: default;
 }
 
 body {
-    background-image: url("../img/meetdevs.jpg");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: unset;
-    background-size: cover;
+  background-image: url("../img/meetdevs.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: unset;
+  background-size: cover;
 }
 
 h1 {
-    font-size: 500%;
-    margin: 10px;
+  font-size: 500%;
+  margin: 10px;
 }
 
 .devs {
-    font-size: 250%;
+  font-size: 250%;
 }
 
 @media screen and (max-width: 1000px) {
+  h1 {
+    font-size: 450%;
+    display: flex;
+    justify-content: center;
+  }
+  .devs img {
+    width: 350px;
+    height: 400px;
+  }
 
-    h1 {
-        font-size: 450%;
-        display: flex;
-        justify-content: center;
-    }
-    .devs img {
-        width: 350px;
-        height: 400px;
-    }
-
-    .devs {
-        font-size: 200%;
-    }
-    
+  .devs {
+    font-size: 200%;
+  }
 }
 
 @media screen and (max-width: 700px) {
+  h1 {
+    font-size: 300%;
+    display: flex;
+    justify-content: center;
+  }
+  .devs img {
+    width: 250px;
+    height: 300px;
+  }
 
-    h1 {
-        font-size: 300%;
-        display: flex;
-        justify-content: center;
-    }
-    .devs img {
-        width: 250px;
-        height: 300px;
-    }
-
-    .devs {
-        font-size: 150%;
-    }
+  .devs {
+    font-size: 150%;
+  }
 }
 
 #sevenDaysAvi {
-    display: none;
+  display: none;
 }
 
 #deathknight {
-    display: none;
+  display: none;
 }
 #darkknight {
-    display: none;
+  display: none;
 }
 
 #bizbab {
-    display: none;
+  display: none;
 }
 
 #shogo {
-    display: none;
+  display: none;
 }
 
 .container {
-    position: relative;
-    margin-top: 30px;
+  position: relative;
+  margin-top: 30px;
 }
 
 #mainMenu {
-    position: relative;
-    bottom: 34px;
+  position: relative;
+  bottom: 34px;
 }
 
 #mmBtn:hover {
-    filter: brightness(120%);
+  filter: brightness(120%);
 }

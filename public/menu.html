@@ -1,46 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/menu.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/menu.css" />
     <script defer type="module" src="./assets/js/menu.js"></script>
     <title>Main Menu</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="jobboard">
-        <div id="profile">
-            <section id="playerCard-container" class="characterCard">
-                <div id="cardBackground">
-                    <div class="cardTitle-container" id="playerName-container">
-                        <h3 id="playerName">PlayerName</h3>
-                    </div>
-                    <div id="playerPortrait-container">
-                        <img id="playerPortrait" class="cardPortrait" src="./assets/img/assassin.png" alt="player's character portrait">
-                    </div>
-                    <div id="playerStat-container">
-                        <div id="PlayerAttack-container">
-                            <p id="playerAttackVal">7</p>
-                        </div>
-                        <div id="PlayerDefense-container">
-                            <p id="playerDefenseVal">6</p>
-                        </div>
-                        <div id="PlayerEvasion-container">
-                            <p id="playerEvasionVal">7</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
+      <div id="profile">
+        <section id="playerCard-container" class="characterCard">
+          <div id="cardBackground">
+            <div class="cardTitle-container" id="playerName-container">
+              <h3 id="playerName">PlayerName</h3>
+            </div>
+            <div id="playerPortrait-container">
+              <img
+                id="playerPortrait"
+                class="cardPortrait"
+                src="./assets/img/assassin.png"
+                alt="player's character portrait"
+              />
+            </div>
+            <div id="playerStat-container">
+              <div id="PlayerAttack-container">
+                <p id="playerAttackVal">7</p>
+              </div>
+              <div id="PlayerDefense-container">
+                <p id="playerDefenseVal">6</p>
+              </div>
+              <div id="PlayerEvasion-container">
+                <p id="playerEvasionVal">7</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
 
-        <a href="./battle.html"> <button id="startmatch" type="submit"></button></a>
-        <a href="./meetdevs.html"><button id="devs" type="submit"></button></a> 
-        <button id="logout" type="submit"></button>
+      <a href="./battle.html">
+        <button id="startmatch" type="submit"></button
+      ></a>
+      <a href="./meetdevs.html"><button id="devs" type="submit"></button></a>
+      <button id="logout" type="submit"></button>
     </div>
-    <audio id="pirate" loop autoplay src="./assets/audio/pirateTheme.mp3">
-        
-    </audio>
-   
-</body>
+    <audio
+      id="pirate"
+      loop
+      autoplay
+      src="./assets/audio/pirateTheme.mp3"
+    ></audio>
+  </body>
+</html>

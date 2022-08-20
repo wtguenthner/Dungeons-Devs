@@ -1,55 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
     <script type="module" src="./assets/js/characterCreation.js" defer></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Arvo&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arvo&display=swap"
+      rel="stylesheet"
+    />
     <title>Dungeons & Devs</title>
-</head>
-<body class="loginBackground">
-          <div class="loginDisplay">
-         
-          <div class="form">
-          <form class="character-form">
-            <div id="createUser" style="display:flex">
-              <label for="username-login">Username:</label>
-              <input class="form-input" type="text" id="username-signup" />
-            </div>
-            <div id="createPassword">
-              <label for="password-login">Password:</label>
-              <input class="form-input" type="password" id="password-signup" />
-            </div>
-            <div>
-              <label for="character-name">Character Name:</label>
-              <input class="form-input" type="text" id="character-name" />
-            </div>
-            <div>
-                <label for="class-choice">Choose a Class:</label>
-                <select id="class-choice" name="class-choice">
-                  <option value= 1>Archer</option>
-                  <option value= 2>Gunslinger</option>
-                  <option value= 3>Mage</option>
-                  <option value= 4>Paladin</option>
-                  <option value= 5>Reaper</option>
-                  <option value= 6>Rogue</option>
-                </select>
-            </div>
-            <div class="create" >
-              <button class="btn btn-primary" type="submit" id="create"></button>
-            </div>
-          </form>
-        
-        
+  </head>
+  <body class="loginBackground">
+    <div class="loginDisplay">
+      <div class="form">
+        <form class="character-form">
+          <div id="createUser" style="display: flex">
+            <label for="username-login">Username:</label>
+            <input class="form-input" type="text" id="username-signup" />
+          </div>
+          <div id="createPassword">
+            <label for="password-login">Password:</label>
+            <input class="form-input" type="password" id="password-signup" />
+          </div>
+          <div>
+            <label for="character-name">Character Name:</label>
+            <input class="form-input" type="text" id="character-name" />
+          </div>
+          <div>
+            <label for="class-choice">Choose a Class:</label>
+            <select
+              id="class-choice"
+              name="class-choice"
+              onchange="changeClassImg()"
+            >
+              <option value="1">Archer</option>
+              <option value="2">Gunslinger</option>
+              <option value="3">Mage</option>
+              <option value="4">Paladin</option>
+              <option value="5">Reaper</option>
+              <option value="6">Rogue</option>
+            </select>
+          </div>
+          <div class="create">
+            <button class="btn btn-primary" type="submit" id="create"></button>
+          </div>
+        </form>
+
+        <div id="classImages"></div>
       </div>
     </div>
-     
 
-    
-</body>
-
+    <script>
+      const changeClassImg = () => {
+        let img = document.getElementById("class-choice").value;
+        console.log(img);
+        const classImages = document.getElementById("classImages");
+        if (img == 1) {
+          classImages.style.backgroundImage = `url(./assets/img/archer1.png)`;
+        } else if (img == 2) {
+          classImages.style.backgroundImage = `url(./assets/img/gunslinger1.png)`;
+        } else if (img == 3) {
+          classImages.style.backgroundImage = `url(./assets/img/mage1.png)`;
+        } else if (img == 4) {
+          classImages.style.backgroundImage = `url(./assets/img/paladin1.png)`;
+        } else if (img == 5) {
+          classImages.style.backgroundImage = `url(./assets/img/reaper1.png)`;
+        } else if (img == 6) {
+          classImages.style.backgroundImage = `url(./assets/img/rogue1.png)`;
+        }
+      };
+    </script>
+  </body>
 </html>

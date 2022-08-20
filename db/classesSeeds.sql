@@ -6,5 +6,5 @@ VALUES
     (4,"Paladin", 8, 7, 5, 100, "./assets/img/paladin.png"),
     (5,"Reaper", 7, 7, 6, 100, "./assets/img/summoner.png"),
     (6,"Rogue", 8, 4, 8, 100, "./assets/img/assassin.png"),
-    (7,"Stanman", 7, 6, 7, 100, "./assets/img/Stanmang79.png");
+    (7,"Stanman", 7, 6, 7, 100, "./assets/img/Stanmanga79.png");
 
