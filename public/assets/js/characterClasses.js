@@ -3,7 +3,7 @@ import Card from './card.js';
 const playerHealthbar = document.getElementById('playerHealthCurrent');
 const bossHealthbar = document.getElementById('bossHealthCurrent');
 const gameLog = document.getElementById('gameLog');
-
+let turn = 1;
 class Fighter {
     constructor(name) {
         this.name = name;
@@ -18,13 +18,27 @@ class Fighter {
                 let damage = this.actions.attack - opponent.actions.defense;
                 opponent.takeDamage(opponent.name, damage, attacker.name);
                 this.updateHealth(healthbar, damage, opponent);
+                if(damage >0){
+                gameLog.innerHTML += `<p>Turn: ${turn}- ${attacker.name} hit ${opponent.name} for ${damage} damage</p>`
+                gameLog.scrollTop = gameLog.scrollHeight;
+                }else{
+                    gameLog.innerHTML += `<p>Turn: ${turn}- ${attacker.name} hit ${opponent.name} for 0 damage</p>`}
+                    gameLog.scrollTop = gameLog.scrollHeight;
                 break;
             case 10:
                 let critDamage = (this.actions.attack * 1.8) - opponent.actions.defense;
                 opponent.takeDamage(opponent.name, critDamage, attacker.name);
                 this.updateHealth(healthbar, critDamage, opponent);
+                if(critDamage >0){
+                    gameLog.innerHTML += `<p>Turn: ${turn}- ${attacker.name} hit ${opponent.name} for ${critDamage} damage</p>`
+                    gameLog.scrollTop = gameLog.scrollHeight;
+                }else{
+                        gameLog.innerHTML += `<p>Turn: ${turn}- ${attacker.name} hit ${opponent.name} for 0 damage</p>`}
+                        gameLog.scrollTop = gameLog.scrollHeight;
+                    break;
                 break;
         }
+       
         return attackProb
     }
 
@@ -115,7 +129,9 @@ class Fighter {
         } else {
             boss.attack(player, healthbar, boss);
         }
+        turn++;
     }
+    
 }
 
 class Might extends Fighter {
