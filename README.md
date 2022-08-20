@@ -1,4 +1,4 @@
-(./public/assets/img/DungeonsNDevs.png)
+![# Dungeons & Devs](./public/assets/img/DungeonsNDevs.png)  
 
 ![GitHub license](https://img.shields.io/github/license/wtguenthner/Dungeons-Devs)
 
@@ -32,10 +32,10 @@ No installation required, just visit [Dungeons & Devs](https://dungeons-devs.her
 ## Usage:
 
 In order to play, you must log in. If this is your first time, create an account and a character.  
-(./public/assets/img/characterCreationExample.png)
+![Character Creation Example](./public/assets/img/characterCreationExample.png)  
 
 Once you have created a character, you will be redirected to the main menu. Your character will be displayed and you can also meet the Devs! To play, select start a match.  
-(./public/assets/img/menuExample.png)
+![Main Menu Example](./public/assets/img/menuExample.png)  
 
 ## Rules:
 
