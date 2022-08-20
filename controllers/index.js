@@ -1,8 +1,9 @@
 import express from "express";
+import passport from "passport";
+import apiBuilder from "../public/utils/auth.js";
 
 const router = express.Router();
-import apiRoutes from "./api/index.js";
 
-router.use("/api", apiRoutes);
+router.use("/api", apiBuilder(passport));
 
-export { router };
+export default router;

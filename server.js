@@ -26,8 +26,8 @@ const sess = {
 };
 
 app.use(session(sess));
+app.use(passport.initialize());
 app.use(passport.session());
-4;
 
 const hbs = exphbs.create({ helpers });
 

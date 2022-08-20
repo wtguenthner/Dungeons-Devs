@@ -1,3 +1,6 @@
+import passport from 'passport';
+import router from '../../controllers/index.js'
+
 passport.serializeUser(function (user, cb) {
   process.nextTick(function () {
     return cb(null, {
@@ -15,3 +18,15 @@ passport.deserializeUser(function (user, cb) {
     });
   });
 });
+
+function apiBuilder(passport) {
+  router.route('./api/index.js')
+      .post(passport.authenticate('local-signup', {
+          successRedirect: '/menu.html',
+          failureRedirect: '/',
+          failureFlash: true
+      })
+  )
+}
+
+export default apiBuilder;
