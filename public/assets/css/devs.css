@@ -9,7 +9,7 @@
 }
 
 body {
-    background-image: url("/public/assets/img/meetdevs.jpg");
+    background-image: url("../img/meetdevs.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: unset;
