@@ -2,6 +2,7 @@ import express from "express";
 const router = express.Router();
 import User from "../../models/User.js";
 import Characters from '../../models/characters.js'
+import passport from 'passport';
 router.get("/:username", async (req, res) => {
   try {
      await User.findOne({where: {username: req.params.username}}).then((data) => res.json(data));
@@ -29,6 +30,10 @@ router.post("/", async (req, res) => {
 // Login
 router.post("/login", async (req, res) => {
   try {
+    passport.authenticate('local', { failureRedirect: '/', failureMessage: true }),
+    function(req, res) {
+      res.redirect('/~' + req.user.username);
+    };
     const dbUserData = await User.findOne({
       where: {
         username: req.body.username,
@@ -68,13 +73,10 @@ router.post("/login", async (req, res) => {
 // Logout
 router.post("/logout", (req, res) => {
   // When the user logs out, destroy the session
-  if (req.session.loggedIn) {
-    req.session.destroy(() => {
-      res.status(204).end();
-    });
-  } else {
-    res.status(404).end();
-  }
+  req.logOut(function(err) {
+    if (err) { return next(err); }
+    res.redirect('/');
+  });
 });
 
 export default router;

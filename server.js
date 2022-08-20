@@ -10,7 +10,9 @@ import session from 'express-session'
 import exphbs from 'express-handlebars'
 import {router} from './controllers/index.js'
 import sequelize from './config/connection.js';
-import helpers from './public/utils/helpers.js'
+import helpers from './public/utils/helpers.js';
+import passport from 'passport';
+
 // import db from './models/index.js'
 
 import { fileURLToPath } from "url";
@@ -26,10 +28,14 @@ app.set('port',process.env.PORT || 3000);
 const sess = {
   secret: 'Super secret secret',
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: false,
+  cookie: {
+    secure: true
+  }
 };
 
 app.use(session(sess));
+app.use(passport.session());4
 
 const hbs = exphbs.create({ helpers });
 

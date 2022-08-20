@@ -16,7 +16,18 @@ profile.addEventListener("submit", () =>
 
 //logout button
 //document.location.replace('/');
-// logout.addEventListener('submit', async() => await fetch("/api/users/logout"));
+logout.addEventListener('click', async() => {
+  const response = await fetch('/api/users/logout', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+  });
+
+  if (response.ok) {
+    document.location.replace('/');
+  } else {
+    alert('Failed to log out.');
+  }
+});
 
 //MTDs button document.location.replace('/meetthedevs.html');
 devs.addEventListener("submit", () =>
