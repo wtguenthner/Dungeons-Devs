@@ -45,7 +45,7 @@ const ruleScroll = document.getElementById('howToPlay-container');
 
 let playedCard;
 let player1;
-const boss = new Easy('Stanley', 8, 8, 4, 100, 'stanmanga78Docker');
+const boss = new Easy('Stanley', 6, 6, 8, 100, 'stanmanga78Docker');
 console.log(boss);
 
 card1.addEventListener('click', (e) => selectCard(e));
