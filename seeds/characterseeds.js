@@ -1,4 +1,4 @@
-import  Characters  from "../models/characters.js";
+import Characters from "../models/characters.js";
 
 const characterData = [];
 

@@ -6,13 +6,14 @@ import User from "../../models/User.js";
 
 router.get("/:id", async (req, res) => {
   try {
-    await Characters.findOne({where: {user_id: req.params.id}})
-    .then((data) => res.json(data))
+    await Characters.findOne({ where: { user_id: req.params.id } }).then(
+      (data) => res.json(data)
+    );
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
-})
+});
 
 router.post("/:id", async (req, res) => {
   try {
@@ -28,7 +29,7 @@ router.post("/:id", async (req, res) => {
           defense: charData.defense,
           evasion: charData.evasion,
           health: charData.health,
-          class_avatar: charData.class_avatar
+          class_avatar: charData.class_avatar,
         });
       })
       .then((data) => res.json(data));

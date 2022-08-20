@@ -1,4 +1,4 @@
-import  Classes  from "../models/classes.js";
+import Classes from "../models/classes.js";
 
 const classData = [
   {
@@ -62,7 +62,7 @@ const classData = [
     defense: 6,
     evasion: 7,
     health: 100,
-    class_avatar: "./assets/img/Stanmang79.png",
+    class_avatar: "./assets/img/Stanmanga79.png",
   },
 ];
 

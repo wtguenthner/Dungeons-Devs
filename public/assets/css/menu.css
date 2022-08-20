@@ -1,173 +1,171 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    background-image: url('../img/menubackground.png');
-    background-size: cover;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    
+  background-image: url("../img/menubackground.png");
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
 
 .jobboard {
-    background-image: url('../img/jobboard.png');
-    background-size: 95%;
-    background-repeat: no-repeat;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    padding: 25%;
-    margin-top: 12%;
-    margin-left: 5%;
-    margin-right: 4%;
+  background-image: url("../img/jobboard.png");
+  background-size: 95%;
+  background-repeat: no-repeat;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding: 25%;
+  margin-top: 12%;
+  margin-left: 5%;
+  margin-right: 4%;
 }
 
 button {
-    padding: 10px;
+  padding: 10px;
 }
 
 #profile {
-    /* background-image: url("../img/playercardblank.png"); */
-    background-color: transparent;
-    background-size: 80%;
-    background-repeat: no-repeat;
-    height: 100%;
-    width: 20%;
-    border: none;
-    position: absolute;
-    top: 35%;
-    left: 22%;
-    display: flex;
+  background-color: transparent;
+  background-size: 80%;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 20%;
+  border: none;
+  position: absolute;
+  top: 35%;
+  left: 22%;
+  display: flex;
 }
 
 #startmatch {
-    background-image: url("../img/startfight.png");
-    background-color: transparent;
-    background-size: 68%;
-    background-repeat: no-repeat;
-    height: 100%;
-    width: 26%;
-    border: none;
-    position: absolute;
-    top: 20%;
-    left: 38%;
+  background-image: url("../img/startfight.png");
+  background-color: transparent;
+  background-size: 68%;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 26%;
+  border: none;
+  position: absolute;
+  top: 20%;
+  left: 38%;
 }
 
 #devs {
-    background-image: url("../img/devs.png");
-    background-color: transparent;
-    background-size: 73%;
-    background-repeat: no-repeat;
-    height: 400px;
-    width: 26%;
-    border: none;
-    position: absolute;
-    top: 52%;
-    left: 37%;
+  background-image: url("../img/devs.png");
+  background-color: transparent;
+  background-size: 73%;
+  background-repeat: no-repeat;
+  height: 400px;
+  width: 26%;
+  border: none;
+  position: absolute;
+  top: 52%;
+  left: 37%;
 }
 
 #logout {
-    background-image: url("../img/logout.png");
-    background-color: transparent;
-    background-repeat: no-repeat;
-    background-size: 58%;
-    border: none;
-    position: absolute;
-    height: 300px;
-    width: 18%;
-    left: 74%;
-    top: 67%;
+  background-image: url("../img/logout.png");
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: 58%;
+  border: none;
+  position: absolute;
+  height: 300px;
+  width: 18%;
+  left: 74%;
+  top: 67%;
 }
 
-#profile:hover, #startmatch:hover, #devs:hover, #logout:hover, #playercard:hover {
-    filter: brightness(120%);
+#profile:hover,
+#startmatch:hover,
+#devs:hover,
+#logout:hover,
+#playercard:hover {
+  filter: brightness(120%);
 }
 
 /* +++++++++PLAYER CARD STYLING+++++++++++++ */
 
 #playercard {
-    background-color: transparent;
-    background-repeat: no-repeat;
-    background-size: 100%;
-    border: none;
-    width: 100%;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  border: none;
+  width: 100%;
 }
 
 .characterCard {
-    color: var(--clr-primary);
-    text-align: center;
+  color: var(--clr-primary);
+  text-align: center;
 }
 
 #playerCard-container {
-    transform: rotate(-6deg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    position: relative;
+  transform: rotate(-6deg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: relative;
 }
 #cardBackground {
-    background-image: url(../img/cardBackground.png);
-    background-position: center;
-    background-size: cover;
-    width: clamp(30%, 12rem, 80%);
+  background-image: url(../img/cardBackground.png);
+  background-position: center;
+  background-size: cover;
+  width: clamp(30%, 12rem, 80%);
 }
 
 #playerStat-container {
-    display: flex;
-    justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
 }
 
-#playerAttackVal, #playerDefenseVal, #playerEvasionVal {
-    text-align: center;
-    font-size: 1.5rem;
-    top: 15.05rem;
-    color: rgb(237, 57, 17);
-    text-shadow:
-        0.07em 0 rgb(46, 7, 7),
-        0 0.07em rgb(46, 7, 7),
-        -0.07em 0 rgb(46, 7, 7),
-        0 -0.07em rgb(46, 7, 7);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: .5rem;
-    margin-bottom: .15rem;
+#playerAttackVal,
+#playerDefenseVal,
+#playerEvasionVal {
+  text-align: center;
+  font-size: 1.5rem;
+  top: 15.05rem;
+  color: rgb(237, 57, 17);
+  text-shadow: 0.07em 0 rgb(46, 7, 7), 0 0.07em rgb(46, 7, 7),
+    -0.07em 0 rgb(46, 7, 7), 0 -0.07em rgb(46, 7, 7);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 0.5rem;
+  margin-bottom: 0.15rem;
 }
 #playerAttackVal {
-    background-image: url(../img/AttackIcon.png);
+  background-image: url(../img/AttackIcon.png);
 }
 #playerDefenseVal {
-    background-image: url(../img/DefenseIcon.png);
+  background-image: url(../img/DefenseIcon.png);
 }
 #playerEvasionVal {
-    background-image: url(../img/EvasionIcon.png);
+  background-image: url(../img/EvasionIcon.png);
 }
 
 .cardTitle-container {
-    font-size: 1rem;
-    color: rgb(208, 166, 166);
-    text-shadow:
-        0.03em 0 rgb(29, 3, 3),
-        0 0.03em rgb(29, 3, 3),
-        -0.03em 0 rgb(29, 3, 3),
-        0 -0.03em rgb(29, 3, 3);
+  font-size: 1rem;
+  color: rgb(208, 166, 166);
+  text-shadow: 0.03em 0 rgb(29, 3, 3), 0 0.03em rgb(29, 3, 3),
+    -0.03em 0 rgb(29, 3, 3), 0 -0.03em rgb(29, 3, 3);
 }
 
 .cardPortrait {
-    width: 80%;
-    margin: auto;
+  width: 80%;
+  margin: auto;
 }
 
 #playerPortait {
-    margin: auto;
+  margin: auto;
 }
 
 h3 {
-    padding-top: .25rem;
+  padding-top: 0.25rem;
 }
 .icon {
-    width: 100%;
+  width: 100%;
 }

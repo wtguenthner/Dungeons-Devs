@@ -1,4 +1,3 @@
-
 const showLogin = (event) => {
   event.preventDefault();
   const userShow = document.querySelector("#user");
@@ -24,10 +23,8 @@ const loginFormHandler = async (event) => {
     });
 
     if (response.ok) {
-  
-      sessionStorage.setItem("username", `${username}`)
+      sessionStorage.setItem("username", `${username}`);
       document.location.replace("/menu.html");
-      
     } else {
       alert("Failed to log in.");
     }
@@ -37,16 +34,13 @@ const loginFormHandler = async (event) => {
 const signupFormHandler = async (event) => {
   event.preventDefault();
   document.location.replace(`/characterCreation.html`);
-  
-  
 };
 
 document
   .querySelector(".login-form")
-  // .addEventListener("submit", loginFormHandler);
+
   .addEventListener("submit", showLogin);
 
 document
   .querySelector(".signup-form")
   .addEventListener("submit", signupFormHandler);
-  
